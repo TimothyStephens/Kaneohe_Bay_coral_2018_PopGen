@@ -1,0 +1,100 @@
+---
+title: "Plot allele depths for each *P. acuta* scaffold"
+author: "Timothy Stephens"
+date: "24/09/2022"
+output: 
+  html_document:
+    keep_md: yes
+---
+
+
+
+# Setup
+
+Setup R env. Load packages and set default image export formats, size and resolution.
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.height = 12, 
+                      fig.width = 8, 
+                      dev = c("png", "pdf"),
+                      dpi = 1000)
+library(tibble)
+library(reshape2)
+library(ggplot2)
+library(RColorBrewer)
+options(scipen = 999) #Prevent scientific notation
+```
+
+
+
+
+
+# List files to plot
+
+List files with allelic proportions that we want to plot. Also get titles that we want to use for the plots.
+```{r prepare_input_file_names, eval=FALSE}
+awk 'NR>1' Pocillopora_acuta_KBHIv2.assembly.fasta.1Mbp_scaffold_features.bed.lrdmodel.nQuire_results.tsv \
+  | sort -k19,19 -k1,1 \
+  | awk '{split($1, a, "-"); print $1".denoise.bin.coverage.sitesProp.gz\t"a[2]" ("$19")"}' \
+  | sed -e 's/.coordsorted-/.coordsorted.lowerProp-/' \
+  > samples_list.txt 
+```
+
+
+
+
+
+# Functions
+
+Function for plotting AP
+
+```{r func_plot_AP}
+plot_AP = function(x.lim.min, x.lim.max)
+{
+  files2plot <- read.table("samples_list.txt", header = F, sep='\t')
+  nsamples <- nrow(files2plot)
+  pdf(paste("plot_xLim_", x.lim.min, "-", x.lim.max, "_Pacuta_scaffolds_AP_combined.pdf", sep=''))
+  par(mar=c(5, 3, 3, 2), cex=1.5, mfrow=c(4,2)) # number of plots per page
+  for (i in 1:nsamples) {
+    AP <- read.table(files2plot[i,1], header = F)
+    d <- density(AP[,1], from=x.lim.min, to=x.lim.max, bw=0.01, na.rm =T)
+    plot(d, xlim = c(x.lim.min,x.lim.max), main=as.character(files2plot[i,2]), col="blue", xlab = (dim(AP)[1])/2, lwd=2)
+  }
+  dev.off()
+}
+```
+
+
+
+
+
+# Load datasets into R
+
+Load allele depth files and plot distributions.
+
+```{r plotting_xLim_0.0-1.0}
+plot_AP(0.0, 1.0)
+```
+
+
+
+```{r plotting_xLim_0.1-0.9}
+plot_AP(0.1, 0.9)
+```
+
+
+
+```{r plotting_xLim_0.2-0.8}
+plot_AP(0.2, 0.8)
+```
+
+
+
+
+
+# Session Info
+
+```{r ressionInfo}
+sessionInfo()
+```

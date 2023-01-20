@@ -1,0 +1,481 @@
+[Mon 07 Feb 2022 06:19:36 AM EST]      LOG: Step 1 - StarAlign
+[Mon 07 Feb 2022 06:19:36 AM EST]      CMD: STAR 			--genomeDir ../00_databases/STAR 			--runThreadN 8 			--readFilesIn /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R1_TrimmingRound2.fastq.gz /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R2_TrimmingRound2.fastq.gz 			--readFilesCommand "gunzip -c" 			--sjdbOverhang 149 			--outSAMtype BAM SortedByCoordinate 			--twopassMode Basic 			--outFileNamePrefix Pacuta_HTAC_TP5_1303.STAR.
+Feb 07 06:19:36 ..... started STAR run
+Feb 07 06:19:36 ..... loading genome
+Feb 07 06:19:40 ..... started 1st pass mapping
+Feb 07 07:45:13 ..... finished 1st pass mapping
+Feb 07 07:45:14 ..... inserting junctions into the genome indices
+Feb 07 07:47:48 ..... started mapping
+Feb 07 09:19:25 ..... finished mapping
+Feb 07 09:19:26 ..... started sorting BAM
+Feb 07 09:19:54 ..... finished successfully
+[Mon 07 Feb 2022 09:19:56 AM EST]      CMD: touch Pacuta_HTAC_TP5_1303.STAR.done
+
+
+
+
+
+
+[Mon 07 Feb 2022 09:19:56 AM EST]      LOG: Step 2.1 - FastqToSam
+[Mon 07 Feb 2022 09:19:56 AM EST]      CMD: gatk FastqToSam 				--FASTQ /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R1_TrimmingRound2.fastq.gz 				--FASTQ2 /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R2_TrimmingRound2.fastq.gz 				--OUTPUT Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.bam 				--SAMPLE_NAME Pacuta_HTAC_TP5_1303
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar FastqToSam --FASTQ /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R1_TrimmingRound2.fastq.gz --FASTQ2 /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R2_TrimmingRound2.fastq.gz --OUTPUT Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.bam --SAMPLE_NAME Pacuta_HTAC_TP5_1303
+09:19:59.094 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Feb 07 09:19:59 EST 2022] FastqToSam --FASTQ /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R1_TrimmingRound2.fastq.gz --FASTQ2 /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Pacuta_HTAC_TP5_1303_R2_TrimmingRound2.fastq.gz --OUTPUT Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.bam --SAMPLE_NAME Pacuta_HTAC_TP5_1303 --USE_SEQUENTIAL_FASTQS false --READ_GROUP_NAME A --SORT_ORDER queryname --MIN_Q 0 --MAX_Q 93 --STRIP_UNPAIRED_MATE_NUMBER false --ALLOW_AND_IGNORE_EMPTY_LINES false --VERBOSITY INFO --QUIET false --VALIDATION_STRINGENCY STRICT --COMPRESSION_LEVEL 2 --MAX_RECORDS_IN_RAM 500000 --CREATE_INDEX false --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+Feb 07, 2022 9:19:59 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+[Mon Feb 07 09:19:59 EST 2022] Executing as timothy@coral on Linux 5.4.0-92-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+8-Ubuntu-0ubuntu1.20.04; Deflater: Intel; Inflater: Intel; Provider GCS is available; Picard version: Version:4.2.0.0
+INFO	2022-02-07 09:19:59	FastqToSam	Auto-detected quality format as: Standard.
+INFO	2022-02-07 09:20:10	FastqToSam	Processed     1,000,000 records.  Elapsed time: 00:00:10s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-02-07 09:20:24	FastqToSam	Processed     2,000,000 records.  Elapsed time: 00:00:24s.  Time for last 1,000,000:   14s.  Last read position: */*
+INFO	2022-02-07 09:20:36	FastqToSam	Processed     3,000,000 records.  Elapsed time: 00:00:36s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:20:48	FastqToSam	Processed     4,000,000 records.  Elapsed time: 00:00:48s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:21:00	FastqToSam	Processed     5,000,000 records.  Elapsed time: 00:01:00s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:21:13	FastqToSam	Processed     6,000,000 records.  Elapsed time: 00:01:13s.  Time for last 1,000,000:   13s.  Last read position: */*
+INFO	2022-02-07 09:21:25	FastqToSam	Processed     7,000,000 records.  Elapsed time: 00:01:25s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:21:37	FastqToSam	Processed     8,000,000 records.  Elapsed time: 00:01:38s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:21:50	FastqToSam	Processed     9,000,000 records.  Elapsed time: 00:01:50s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:22:02	FastqToSam	Processed    10,000,000 records.  Elapsed time: 00:02:03s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:22:13	FastqToSam	Processed    11,000,000 records.  Elapsed time: 00:02:14s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:22:25	FastqToSam	Processed    12,000,000 records.  Elapsed time: 00:02:26s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:22:38	FastqToSam	Processed    13,000,000 records.  Elapsed time: 00:02:38s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:22:50	FastqToSam	Processed    14,000,000 records.  Elapsed time: 00:02:50s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:23:02	FastqToSam	Processed    15,000,000 records.  Elapsed time: 00:03:02s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:23:14	FastqToSam	Processed    16,000,000 records.  Elapsed time: 00:03:15s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:23:26	FastqToSam	Processed    17,000,000 records.  Elapsed time: 00:03:27s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:23:39	FastqToSam	Processed    18,000,000 records.  Elapsed time: 00:03:39s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:23:50	FastqToSam	Processed    19,000,000 records.  Elapsed time: 00:03:50s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-02-07 09:24:02	FastqToSam	Processed    20,000,000 records.  Elapsed time: 00:04:03s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:24:15	FastqToSam	Processed    21,000,000 records.  Elapsed time: 00:04:15s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:24:28	FastqToSam	Processed    22,000,000 records.  Elapsed time: 00:04:28s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:24:40	FastqToSam	Processed    23,000,000 records.  Elapsed time: 00:04:41s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:24:53	FastqToSam	Processed    24,000,000 records.  Elapsed time: 00:04:54s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:25:06	FastqToSam	Processed    25,000,000 records.  Elapsed time: 00:05:06s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:25:18	FastqToSam	Processed    26,000,000 records.  Elapsed time: 00:05:19s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:25:30	FastqToSam	Processed    27,000,000 records.  Elapsed time: 00:05:31s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:25:42	FastqToSam	Processed    28,000,000 records.  Elapsed time: 00:05:42s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:25:54	FastqToSam	Processed    29,000,000 records.  Elapsed time: 00:05:54s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:26:06	FastqToSam	Processed    30,000,000 records.  Elapsed time: 00:06:06s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:26:17	FastqToSam	Processed    31,000,000 records.  Elapsed time: 00:06:18s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-02-07 09:26:29	FastqToSam	Processed    32,000,000 records.  Elapsed time: 00:06:30s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:26:42	FastqToSam	Processed    33,000,000 records.  Elapsed time: 00:06:43s.  Time for last 1,000,000:   13s.  Last read position: */*
+INFO	2022-02-07 09:26:55	FastqToSam	Processed    34,000,000 records.  Elapsed time: 00:06:55s.  Time for last 1,000,000:   12s.  Last read position: */*
+INFO	2022-02-07 09:27:05	FastqToSam	Processed 17394015 fastq reads
+[Mon Feb 07 09:28:58 EST 2022] picard.sam.FastqToSam done. Elapsed time: 8.99 minutes.
+Runtime.totalMemory()=520093696
+Tool returned:
+0
+[Mon 07 Feb 2022 09:28:58 AM EST]      CMD: touch Pacuta_HTAC_TP5_1303.FastqToSam.done
+[Mon 07 Feb 2022 09:28:58 AM EST]      LOG: Step 2.2 - collect_RG
+[Mon 07 Feb 2022 09:28:58 AM EST]      CMD: samtools view Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.bam 				| rgsam collect --format sam --qnformat illumina-1.8 -s Pacuta_HTAC_TP5_1303 -o Pacuta_HTAC_TP5_1303.collect_RG.txt
+Info: reading from stdin
+[Mon 07 Feb 2022 09:30:34 AM EST]      CMD: samtools view -h Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.bam 				| rgsam tag --qnformat illumina-1.8 -r Pacuta_HTAC_TP5_1303.collect_RG.txt 				| samtools view -b - 				> Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.rg.bam
+Info: reading from stdin
+Info: writing to stdout
+[Mon 07 Feb 2022 09:39:50 AM EST]      CMD: touch Pacuta_HTAC_TP5_1303.collect_RG.done
+[Mon 07 Feb 2022 09:39:50 AM EST]      LOG: Step 2.3 - MergeBamAlignment
+[Mon 07 Feb 2022 09:39:50 AM EST]      CMD: gatk MergeBamAlignment 					--REFERENCE_SEQUENCE Pocillopora_acuta_KBHIv2.assembly.fasta 					--UNMAPPED_BAM Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.rg.bam 					--ALIGNED_BAM Pacuta_HTAC_TP5_1303.STAR.Aligned.sortedByCoord.out.bam 					--OUTPUT Pacuta_HTAC_TP5_1303.MergeBamAlignment.merged.bam 					--INCLUDE_SECONDARY_ALIGNMENTS false 					--VALIDATION_STRINGENCY SILENT
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar MergeBamAlignment --REFERENCE_SEQUENCE Pocillopora_acuta_KBHIv2.assembly.fasta --UNMAPPED_BAM Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.rg.bam --ALIGNED_BAM Pacuta_HTAC_TP5_1303.STAR.Aligned.sortedByCoord.out.bam --OUTPUT Pacuta_HTAC_TP5_1303.MergeBamAlignment.merged.bam --INCLUDE_SECONDARY_ALIGNMENTS false --VALIDATION_STRINGENCY SILENT
+09:39:52.684 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Feb 07 09:39:52 EST 2022] MergeBamAlignment --UNMAPPED_BAM Pacuta_HTAC_TP5_1303.FastqToSam.unmapped.rg.bam --ALIGNED_BAM Pacuta_HTAC_TP5_1303.STAR.Aligned.sortedByCoord.out.bam --OUTPUT Pacuta_HTAC_TP5_1303.MergeBamAlignment.merged.bam --INCLUDE_SECONDARY_ALIGNMENTS false --VALIDATION_STRINGENCY SILENT --REFERENCE_SEQUENCE Pocillopora_acuta_KBHIv2.assembly.fasta --ADD_PG_TAG_TO_READS true --PAIRED_RUN true --CLIP_ADAPTERS true --IS_BISULFITE_SEQUENCE false --ALIGNED_READS_ONLY false --MAX_INSERTIONS_OR_DELETIONS 1 --ATTRIBUTES_TO_REVERSE OQ --ATTRIBUTES_TO_REVERSE U2 --ATTRIBUTES_TO_REVERSE_COMPLEMENT E2 --ATTRIBUTES_TO_REVERSE_COMPLEMENT SQ --READ1_TRIM 0 --READ2_TRIM 0 --ALIGNER_PROPER_PAIR_FLAGS false --SORT_ORDER coordinate --PRIMARY_ALIGNMENT_STRATEGY BestMapq --CLIP_OVERLAPPING_READS true --HARD_CLIP_OVERLAPPING_READS false --ADD_MATE_CIGAR true --UNMAP_CONTAMINANT_READS false --MIN_UNCLIPPED_BASES 32 --MATCHING_DICTIONARY_TAGS M5 --MATCHING_DICTIONARY_TAGS LN --UNMAPPED_READ_STRATEGY DO_NOT_CHANGE --VERBOSITY INFO --QUIET false --COMPRESSION_LEVEL 2 --MAX_RECORDS_IN_RAM 500000 --CREATE_INDEX false --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+Feb 07, 2022 9:39:52 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+[Mon Feb 07 09:39:52 EST 2022] Executing as timothy@coral on Linux 5.4.0-92-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+8-Ubuntu-0ubuntu1.20.04; Deflater: Intel; Inflater: Intel; Provider GCS is available; Picard version: Version:4.2.0.0
+INFO	2022-02-07 09:39:52	SamAlignmentMerger	Processing SAM file(s): [Pacuta_HTAC_TP5_1303.STAR.Aligned.sortedByCoord.out.bam]
+WARNING	2022-02-07 09:39:53	SamAlignmentMerger	Exception merging bam alignment - attempting to sort aligned reads and try again: Underlying iterator is not queryname sorted: GWNJ-0957:502:GW1910282606th:3:2224:11870:13369 2/2 110b aligned to Pocillopora_acuta_KBHIv2___Sc0000000:7592-7701. > GWNJ-0957:502:GW1910282606th:3:1122:22100:40477 1/2 136b aligned to Pocillopora_acuta_KBHIv2___Sc0000000:9360-9495.
+INFO	2022-02-07 09:39:57	SamAlignmentMerger	Read 1000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:02	SamAlignmentMerger	Read 2000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:06	SamAlignmentMerger	Read 3000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:11	SamAlignmentMerger	Read 4000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:17	SamAlignmentMerger	Read 5000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:22	SamAlignmentMerger	Read 6000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:27	SamAlignmentMerger	Read 7000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:32	SamAlignmentMerger	Read 8000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:36	SamAlignmentMerger	Read 9000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:41	SamAlignmentMerger	Read 10000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:46	SamAlignmentMerger	Read 11000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:51	SamAlignmentMerger	Read 12000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:40:56	SamAlignmentMerger	Read 13000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:00	SamAlignmentMerger	Read 14000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:05	SamAlignmentMerger	Read 15000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:09	SamAlignmentMerger	Read 16000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:13	SamAlignmentMerger	Read 17000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:18	SamAlignmentMerger	Read 18000000 records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:22	SamAlignmentMerger	Finished reading 18645240 total records from alignment SAM/BAM.
+INFO	2022-02-07 09:41:24	AbstractAlignmentMerger	Seen many non-increasing record positions. Printing Read-names as well.
+INFO	2022-02-07 09:41:46	AbstractAlignmentMerger	Merged     1,000,000 records.  Elapsed time: 00:01:53s.  Time for last 1,000,000:   22s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000043:47,552.  Last read name: A00387:181:GW191020342nd:1:1306:9073:19366
+INFO	2022-02-07 09:42:09	AbstractAlignmentMerger	Merged     2,000,000 records.  Elapsed time: 00:02:16s.  Time for last 1,000,000:   23s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000005:7,373,239.  Last read name: A00387:181:GW191020342nd:1:1511:18991:32722
+INFO	2022-02-07 09:42:29	AbstractAlignmentMerger	Merged     3,000,000 records.  Elapsed time: 00:02:36s.  Time for last 1,000,000:   20s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000113:21,237.  Last read name: A00387:181:GW191020342nd:1:2117:14244:7091
+INFO	2022-02-07 09:42:51	AbstractAlignmentMerger	Merged     4,000,000 records.  Elapsed time: 00:02:58s.  Time for last 1,000,000:   22s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000003:3,242,378.  Last read name: A00387:181:GW191020342nd:1:2349:6940:2143
+INFO	2022-02-07 09:43:13	AbstractAlignmentMerger	Merged     5,000,000 records.  Elapsed time: 00:03:20s.  Time for last 1,000,000:   21s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000001:5,110,926.  Last read name: A00387:181:GW191020342nd:1:2605:16595:12289
+INFO	2022-02-07 09:43:34	AbstractAlignmentMerger	Merged     6,000,000 records.  Elapsed time: 00:03:41s.  Time for last 1,000,000:   20s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000019:2,126,633.  Last read name: GWNJ-0957:502:GW1910282606th:3:1111:12002:26220
+INFO	2022-02-07 09:43:55	AbstractAlignmentMerger	Merged     7,000,000 records.  Elapsed time: 00:04:02s.  Time for last 1,000,000:   21s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000010:617,628.  Last read name: GWNJ-0957:502:GW1910282606th:3:1203:7182:64386
+INFO	2022-02-07 09:44:17	AbstractAlignmentMerger	Merged     8,000,000 records.  Elapsed time: 00:04:24s.  Time for last 1,000,000:   21s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000010:2,864,199.  Last read name: GWNJ-0957:502:GW1910282606th:3:1220:31314:17869
+INFO	2022-02-07 09:44:38	AbstractAlignmentMerger	Merged     9,000,000 records.  Elapsed time: 00:04:45s.  Time for last 1,000,000:   21s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000002:1,816,672.  Last read name: GWNJ-0957:502:GW1910282606th:3:2114:31852:68096
+INFO	2022-02-07 09:45:02	AbstractAlignmentMerger	Merged    10,000,000 records.  Elapsed time: 00:05:09s.  Time for last 1,000,000:   23s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000001:5,595,731.  Last read name: GWNJ-0957:502:GW1910282606th:3:2208:32106:20331
+INFO	2022-02-07 09:45:24	AbstractAlignmentMerger	Merged    11,000,000 records.  Elapsed time: 00:05:31s.  Time for last 1,000,000:   22s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000005:2,688,444.  Last read name: GWNJ-0957:502:GW1910282606th:4:1102:25682:2557
+INFO	2022-02-07 09:45:45	AbstractAlignmentMerger	Merged    12,000,000 records.  Elapsed time: 00:05:52s.  Time for last 1,000,000:   20s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000001:2,677,232.  Last read name: GWNJ-0957:502:GW1910282606th:4:1119:18822:28154
+INFO	2022-02-07 09:46:07	AbstractAlignmentMerger	Merged    13,000,000 records.  Elapsed time: 00:06:14s.  Time for last 1,000,000:   22s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000008:3,327,465.  Last read name: GWNJ-0957:502:GW1910282606th:4:1212:16681:55526
+INFO	2022-02-07 09:46:27	AbstractAlignmentMerger	Merged    14,000,000 records.  Elapsed time: 00:06:34s.  Time for last 1,000,000:   19s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000004:1,326,203.  Last read name: GWNJ-0957:502:GW1910282606th:4:2105:13890:29560
+INFO	2022-02-07 09:46:46	AbstractAlignmentMerger	Merged    15,000,000 records.  Elapsed time: 00:06:53s.  Time for last 1,000,000:   19s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000020:2,760,281.  Last read name: GWNJ-0957:502:GW1910282606th:4:2122:14346:15232
+INFO	2022-02-07 09:47:05	AbstractAlignmentMerger	Merged    16,000,000 records.  Elapsed time: 00:07:12s.  Time for last 1,000,000:   19s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000003:4,831,945.  Last read name: GWNJ-0957:502:GW1910282606th:4:2215:2777:3735
+INFO	2022-02-07 09:48:06	AbstractAlignmentMerger	Written in coordinate order to output    10,000,000 records.  Elapsed time: 00:00:48s.  Time for last 10,000,000:   47s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000002:8,541,083
+INFO	2022-02-07 09:48:44	AbstractAlignmentMerger	Written in coordinate order to output    20,000,000 records.  Elapsed time: 00:01:26s.  Time for last 10,000,000:   37s.  Last read position: */*
+INFO	2022-02-07 09:49:02	AbstractAlignmentMerger	Written in coordinate order to output    30,000,000 records.  Elapsed time: 00:01:44s.  Time for last 10,000,000:   17s.  Last read position: */*
+INFO	2022-02-07 09:49:12	AbstractAlignmentMerger	Wrote 18575437 alignment records and 18248611 unmapped reads.
+[Mon Feb 07 09:49:12 EST 2022] picard.sam.MergeBamAlignment done. Elapsed time: 9.32 minutes.
+Runtime.totalMemory()=419430400
+Tool returned:
+0
+[Mon 07 Feb 2022 09:49:12 AM EST]      CMD: touch Pacuta_HTAC_TP5_1303.MergeBamAlignment.done
+
+
+
+
+
+
+[Mon 07 Feb 2022 09:49:12 AM EST]      LOG: Step 3 - MarkDuplicates
+[Mon 07 Feb 2022 09:49:12 AM EST]      CMD: gatk MarkDuplicates 					--INPUT Pacuta_HTAC_TP5_1303.MergeBamAlignment.merged.bam 					--OUTPUT Pacuta_HTAC_TP5_1303.MarkDuplicates.dedupped.bam 					--CREATE_INDEX true 					--VALIDATION_STRINGENCY SILENT 					--METRICS_FILE Pacuta_HTAC_TP5_1303.MarkDuplicates.metrics
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar MarkDuplicates --INPUT Pacuta_HTAC_TP5_1303.MergeBamAlignment.merged.bam --OUTPUT Pacuta_HTAC_TP5_1303.MarkDuplicates.dedupped.bam --CREATE_INDEX true --VALIDATION_STRINGENCY SILENT --METRICS_FILE Pacuta_HTAC_TP5_1303.MarkDuplicates.metrics
+09:49:15.069 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Feb 07 09:49:15 EST 2022] MarkDuplicates --INPUT Pacuta_HTAC_TP5_1303.MergeBamAlignment.merged.bam --OUTPUT Pacuta_HTAC_TP5_1303.MarkDuplicates.dedupped.bam --METRICS_FILE Pacuta_HTAC_TP5_1303.MarkDuplicates.metrics --VALIDATION_STRINGENCY SILENT --CREATE_INDEX true --MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP 50000 --MAX_FILE_HANDLES_FOR_READ_ENDS_MAP 8000 --SORTING_COLLECTION_SIZE_RATIO 0.25 --TAG_DUPLICATE_SET_MEMBERS false --REMOVE_SEQUENCING_DUPLICATES false --TAGGING_POLICY DontTag --CLEAR_DT true --DUPLEX_UMI false --ADD_PG_TAG_TO_READS true --REMOVE_DUPLICATES false --ASSUME_SORTED false --DUPLICATE_SCORING_STRATEGY SUM_OF_BASE_QUALITIES --PROGRAM_RECORD_ID MarkDuplicates --PROGRAM_GROUP_NAME MarkDuplicates --READ_NAME_REGEX <optimized capture of last three ':' separated fields as numeric values> --OPTICAL_DUPLICATE_PIXEL_DISTANCE 100 --MAX_OPTICAL_DUPLICATE_SET_SIZE 300000 --VERBOSITY INFO --QUIET false --COMPRESSION_LEVEL 2 --MAX_RECORDS_IN_RAM 500000 --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+Feb 07, 2022 9:49:15 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+[Mon Feb 07 09:49:15 EST 2022] Executing as timothy@coral on Linux 5.4.0-92-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+8-Ubuntu-0ubuntu1.20.04; Deflater: Intel; Inflater: Intel; Provider GCS is available; Picard version: Version:4.2.0.0
+INFO	2022-02-07 09:49:15	MarkDuplicates	Start of doWork freeMemory: 114286496; totalMemory: 142606336; maxMemory: 32178700288
+INFO	2022-02-07 09:49:15	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2022-02-07 09:49:15	MarkDuplicates	Will retain up to 116589493 data points before spilling to disk.
+INFO	2022-02-07 09:49:21	MarkDuplicates	Read     1,000,000 records.  Elapsed time: 00:00:05s.  Time for last 1,000,000:    5s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000001:9,608,076
+INFO	2022-02-07 09:49:21	MarkDuplicates	Tracking 8 as yet unmatched pairs. 8 records in RAM.
+INFO	2022-02-07 09:49:25	MarkDuplicates	Read     2,000,000 records.  Elapsed time: 00:00:09s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000003:5,240,841
+INFO	2022-02-07 09:49:25	MarkDuplicates	Tracking 4 as yet unmatched pairs. 4 records in RAM.
+INFO	2022-02-07 09:49:30	MarkDuplicates	Read     3,000,000 records.  Elapsed time: 00:00:14s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000005:2,688,535
+INFO	2022-02-07 09:49:30	MarkDuplicates	Tracking 5916 as yet unmatched pairs. 5916 records in RAM.
+INFO	2022-02-07 09:49:36	MarkDuplicates	Read     4,000,000 records.  Elapsed time: 00:00:20s.  Time for last 1,000,000:    5s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000007:2,265,658
+INFO	2022-02-07 09:49:36	MarkDuplicates	Tracking 44 as yet unmatched pairs. 44 records in RAM.
+INFO	2022-02-07 09:49:39	MarkDuplicates	Read     5,000,000 records.  Elapsed time: 00:00:23s.  Time for last 1,000,000:    3s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000010:6,072,849
+INFO	2022-02-07 09:49:39	MarkDuplicates	Tracking 14 as yet unmatched pairs. 14 records in RAM.
+INFO	2022-02-07 09:49:44	MarkDuplicates	Read     6,000,000 records.  Elapsed time: 00:00:27s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000017:905,763
+INFO	2022-02-07 09:49:44	MarkDuplicates	Tracking 36 as yet unmatched pairs. 36 records in RAM.
+INFO	2022-02-07 09:49:49	MarkDuplicates	Read     7,000,000 records.  Elapsed time: 00:00:33s.  Time for last 1,000,000:    5s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000023:1,610,936
+INFO	2022-02-07 09:49:49	MarkDuplicates	Tracking 10 as yet unmatched pairs. 10 records in RAM.
+INFO	2022-02-07 09:49:54	MarkDuplicates	Read     8,000,000 records.  Elapsed time: 00:00:38s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___Sc0000035:427,533
+INFO	2022-02-07 09:49:54	MarkDuplicates	Tracking 4 as yet unmatched pairs. 3 records in RAM.
+INFO	2022-02-07 09:49:59	MarkDuplicates	Read     9,000,000 records.  Elapsed time: 00:00:43s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000000:9,442,580
+INFO	2022-02-07 09:49:59	MarkDuplicates	Tracking 84 as yet unmatched pairs. 83 records in RAM.
+INFO	2022-02-07 09:50:02	MarkDuplicates	Read    10,000,000 records.  Elapsed time: 00:00:46s.  Time for last 1,000,000:    3s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000002:8,541,083
+INFO	2022-02-07 09:50:02	MarkDuplicates	Tracking 12 as yet unmatched pairs. 11 records in RAM.
+INFO	2022-02-07 09:50:07	MarkDuplicates	Read    11,000,000 records.  Elapsed time: 00:00:51s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000006:4,892,529
+INFO	2022-02-07 09:50:07	MarkDuplicates	Tracking 64 as yet unmatched pairs. 63 records in RAM.
+INFO	2022-02-07 09:50:12	MarkDuplicates	Read    12,000,000 records.  Elapsed time: 00:00:56s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000011:1,024,855
+INFO	2022-02-07 09:50:12	MarkDuplicates	Tracking 22 as yet unmatched pairs. 21 records in RAM.
+INFO	2022-02-07 09:50:17	MarkDuplicates	Read    13,000,000 records.  Elapsed time: 00:01:00s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000016:3,779,000
+INFO	2022-02-07 09:50:17	MarkDuplicates	Tracking 30 as yet unmatched pairs. 29 records in RAM.
+INFO	2022-02-07 09:50:20	MarkDuplicates	Read    14,000,000 records.  Elapsed time: 00:01:04s.  Time for last 1,000,000:    3s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000023:1,837,516
+INFO	2022-02-07 09:50:20	MarkDuplicates	Tracking 22 as yet unmatched pairs. 21 records in RAM.
+INFO	2022-02-07 09:50:26	MarkDuplicates	Read    15,000,000 records.  Elapsed time: 00:01:10s.  Time for last 1,000,000:    5s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000036:438,476
+INFO	2022-02-07 09:50:26	MarkDuplicates	Tracking 12 as yet unmatched pairs. 11 records in RAM.
+INFO	2022-02-07 09:50:30	MarkDuplicates	Read    16,000,000 records.  Elapsed time: 00:01:14s.  Time for last 1,000,000:    4s.  Last read position: Pocillopora_acuta_KBHIv2___xpSc0000387:9,150,870
+INFO	2022-02-07 09:50:30	MarkDuplicates	Tracking 22 as yet unmatched pairs. 22 records in RAM.
+INFO	2022-02-07 09:50:32	MarkDuplicates	Read 16565110 records. 0 pairs never matched.
+INFO	2022-02-07 09:50:33	MarkDuplicates	After buildSortedReadEndLists freeMemory: 6783219192; totalMemory: 9537847296; maxMemory: 32178700288
+INFO	2022-02-07 09:50:33	MarkDuplicates	Will retain up to 1005584384 duplicate indices before spilling to disk.
+INFO	2022-02-07 09:50:39	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2022-02-07 09:50:42	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2022-02-07 09:50:44	MarkDuplicates	Sorting list of duplicate records.
+INFO	2022-02-07 09:50:44	MarkDuplicates	After generateDuplicateIndexes freeMemory: 9504800624; totalMemory: 17586716672; maxMemory: 32178700288
+INFO	2022-02-07 09:50:44	MarkDuplicates	Marking 3150057 records as duplicates.
+INFO	2022-02-07 09:50:44	MarkDuplicates	Found 39083 optical duplicate clusters.
+INFO	2022-02-07 09:50:44	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2022-02-07 09:51:46	MarkDuplicates	Written    10,000,000 records.  Elapsed time: 00:01:01s.  Time for last 10,000,000:   61s.  Last read position: Pocillopora_acuta_KBHIv2___xfSc0000002:8,541,083
+INFO	2022-02-07 09:52:43	MarkDuplicates	Written    20,000,000 records.  Elapsed time: 00:01:58s.  Time for last 10,000,000:   57s.  Last read position: */*
+INFO	2022-02-07 09:53:34	MarkDuplicates	Written    30,000,000 records.  Elapsed time: 00:02:49s.  Time for last 10,000,000:   51s.  Last read position: */*
+INFO	2022-02-07 09:53:56	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2022-02-07 09:53:56	MarkDuplicates	Duplicate Index cleanup.
+INFO	2022-02-07 09:53:56	MarkDuplicates	Getting Memory Stats.
+INFO	2022-02-07 09:53:58	MarkDuplicates	Before output close freeMemory: 398754040; totalMemory: 436207616; maxMemory: 32178700288
+INFO	2022-02-07 09:53:58	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2022-02-07 09:53:58	MarkDuplicates	After output close freeMemory: 176078432; totalMemory: 209715200; maxMemory: 32178700288
+[Mon Feb 07 09:53:58 EST 2022] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 4.72 minutes.
+Runtime.totalMemory()=209715200
+Tool returned:
+0
+[Mon 07 Feb 2022 09:53:58 AM EST]      CMD: touch Pacuta_HTAC_TP5_1303.MarkDuplicates.done
+
+
+
+
+
+
+[Mon 07 Feb 2022 09:53:58 AM EST]      LOG: Step 4 - SplitNCigarReads
+[Mon 07 Feb 2022 09:53:58 AM EST]      CMD: gatk SplitNCigarReads 					-R Pocillopora_acuta_KBHIv2.assembly.fasta 					-I Pacuta_HTAC_TP5_1303.MarkDuplicates.dedupped.bam 					-O Pacuta_HTAC_TP5_1303.SplitNCigarReads.split.bam
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar SplitNCigarReads -R Pocillopora_acuta_KBHIv2.assembly.fasta -I Pacuta_HTAC_TP5_1303.MarkDuplicates.dedupped.bam -O Pacuta_HTAC_TP5_1303.SplitNCigarReads.split.bam
+09:54:00.392 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Feb 07, 2022 9:54:00 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+09:54:00.752 INFO  SplitNCigarReads - ------------------------------------------------------------
+09:54:00.753 INFO  SplitNCigarReads - The Genome Analysis Toolkit (GATK) v4.2.0.0
+09:54:00.753 INFO  SplitNCigarReads - For support and documentation go to https://software.broadinstitute.org/gatk/
+09:54:00.753 INFO  SplitNCigarReads - Executing as timothy@coral on Linux v5.4.0-92-generic amd64
+09:54:00.753 INFO  SplitNCigarReads - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+8-Ubuntu-0ubuntu1.20.04
+09:54:00.753 INFO  SplitNCigarReads - Start Date/Time: February 7, 2022 at 9:54:00 AM EST
+09:54:00.753 INFO  SplitNCigarReads - ------------------------------------------------------------
+09:54:00.753 INFO  SplitNCigarReads - ------------------------------------------------------------
+09:54:00.754 INFO  SplitNCigarReads - HTSJDK Version: 2.24.0
+09:54:00.754 INFO  SplitNCigarReads - Picard Version: 2.25.0
+09:54:00.754 INFO  SplitNCigarReads - Built for Spark Version: 2.4.5
+09:54:00.754 INFO  SplitNCigarReads - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+09:54:00.754 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+09:54:00.754 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+09:54:00.754 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+09:54:00.754 INFO  SplitNCigarReads - Deflater: IntelDeflater
+09:54:00.754 INFO  SplitNCigarReads - Inflater: IntelInflater
+09:54:00.754 INFO  SplitNCigarReads - GCS max retries/reopens: 20
+09:54:00.755 INFO  SplitNCigarReads - Requester pays: disabled
+09:54:00.755 INFO  SplitNCigarReads - Initializing engine
+09:54:01.137 INFO  SplitNCigarReads - Done initializing engine
+09:54:01.211 INFO  ProgressMeter - Starting traversal
+09:54:01.211 INFO  ProgressMeter -        Current Locus  Elapsed Minutes       Reads Processed     Reads/Minute
+09:54:11.222 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000000:6639294              0.2                208000        1247127.0
+09:54:21.257 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000000:11998164              0.3                432000        1293090.5
+09:54:31.303 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:1633631              0.5                652000        1300099.7
+09:54:41.317 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:6466361              0.7                848000        1268669.7
+09:54:51.373 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:10462970              0.8               1038000        1241577.3
+09:55:01.401 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000002:454888              1.0               1233000        1229107.8
+09:55:11.412 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000002:3322713              1.2               1453000        1241862.7
+09:55:21.446 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000002:7312749              1.3               1630000        1218919.4
+09:55:31.491 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000003:1684818              1.5               1831000        1216894.3
+09:55:41.513 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000003:5336608              1.7               2011000        1202967.0
+09:55:51.532 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000003:9811041              1.8               2226000        1210659.9
+09:56:01.536 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000004:2484189              2.0               2433000        1213224.3
+09:56:11.548 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000004:7748213              2.2               2610000        1201500.7
+09:56:21.556 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:716626              2.3               2802000        1197913.7
+09:56:31.558 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:2688625              2.5               3034000        1210807.1
+09:56:41.899 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:3576514              2.7               3287000        1227355.0
+09:56:51.934 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:9048439              2.8               3488000        1225859.7
+09:57:01.955 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000006:3829380              3.0               3629000        1204694.0
+09:57:11.991 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000007:971728              3.2               3856000        1212705.7
+09:57:22.023 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000007:7310683              3.3               4060000        1213081.0
+09:57:32.150 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000008:4015261              3.5               4234000        1204329.2
+09:57:42.176 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000009:972783              3.7               4444000        1206706.9
+09:57:52.414 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000010:18143              3.9               4630000        1201546.7
+09:58:02.448 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000010:3817482              4.0               4884000        1214744.1
+09:58:12.469 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000011:1675355              4.2               5096000        1216921.3
+09:58:22.536 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000012:2874682              4.4               5294000        1215502.6
+09:58:32.580 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000013:1999061              4.5               5448000        1204559.1
+09:58:42.604 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000014:4356488              4.7               5638000        1202166.4
+09:58:52.657 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000015:3410606              4.9               5862000        1206810.2
+09:59:02.721 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000017:2333003              5.0               6043000        1202551.2
+09:59:12.938 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000018:3566841              5.2               6252000        1203364.5
+09:59:22.942 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000020:355923              5.4               6463000        1205296.4
+09:59:33.021 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000020:2710535              5.5               6690000        1209732.1
+09:59:43.022 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000022:2877374              5.7               6903000        1211722.3
+09:59:53.061 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000023:2724364              5.9               7103000        1211258.2
+10:00:03.076 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000024:2509136              6.0               7307000        1211560.1
+10:00:13.087 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000029:466496              6.2               7550000        1218148.0
+10:00:23.123 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000031:574392              6.4               7782000        1222588.5
+10:00:33.150 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000035:1113298              6.5               8028000        1228966.8
+10:00:43.167 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000039:870472              6.7               8313000        1240882.1
+10:00:53.214 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:1020795              6.9               8612000        1254168.7
+10:01:03.231 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:4961678              7.0               8837000        1256386.0
+10:01:13.247 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:9590230              7.2               9002000        1250176.5
+10:01:23.254 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:87862              7.4               9136000        1240063.2
+10:01:33.309 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:4246566              7.5               9374000        1244069.3
+10:01:43.378 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:9564754              7.7               9571000        1242537.9
+10:01:53.380 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000002:4070903              7.9               9783000        1243156.6
+10:02:03.398 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000002:7767617              8.0               9960000        1239353.2
+10:02:13.511 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000003:3930702              8.2              10188000        1241681.9
+10:02:23.528 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000004:1246565              8.4              10376000        1239376.7
+10:02:33.533 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000005:164123              8.5              10587000        1239886.7
+10:02:43.545 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000005:2468418              8.7              10785000        1238864.9
+10:02:53.643 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000006:3903835              8.9              10943000        1233173.9
+10:03:03.669 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000007:3169429              9.0              11154000        1233719.9
+10:03:13.727 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000008:143481              9.2              11347000        1232217.7
+10:03:23.749 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000008:5367735              9.4              11576000        1234689.9
+10:03:33.758 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000009:3186597              9.5              11741000        1230399.0
+10:03:43.820 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000010:5043454              9.7              11918000        1227375.5
+10:03:53.864 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000011:2012141              9.9              12125000        1227531.1
+10:04:03.893 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000011:4283179             10.0              12283000        1222833.9
+10:04:13.937 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000013:2225935             10.2              12480000        1222079.7
+10:04:23.971 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000014:3758643             10.4              12702000        1223778.0
+10:04:33.984 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000016:1038203             10.5              12909000        1224040.8
+10:04:44.026 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000017:250070             10.7              13118000        1224428.8
+10:04:54.085 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000018:1541842             10.9              13360000        1227802.0
+10:05:04.122 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000020:2148277             11.0              13613000        1232113.0
+10:05:14.139 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000022:1785458             11.2              13880000        1237578.5
+10:05:24.171 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000024:926549             11.4              14105000        1239164.8
+10:05:34.186 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000026:788077             11.5              14326000        1240391.1
+10:05:44.204 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000029:697053             11.7              14605000        1246529.1
+10:05:54.532 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000033:7296             11.9              14892000        1252621.5
+10:06:04.543 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000043:386867             12.1              15218000        1262324.9
+10:06:14.590 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000387:1479928             12.2              15577000        1274402.5
+10:06:24.649 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000387:4996168             12.4              15785000        1273946.2
+10:06:34.697 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000387:8957955             12.6              15969000        1271609.6
+10:06:44.849 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000389:110662             12.7              16193000        1272306.1
+10:06:54.863 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000393:1465361             12.9              16416000        1273130.6
+10:07:05.159 INFO  ProgressMeter -             unmapped             13.1              17391000        1331032.2
+10:07:15.440 INFO  ProgressMeter -             unmapped             13.2              19041000        1438451.6
+10:07:25.683 INFO  ProgressMeter -             unmapped             13.4              20691000        1543198.5
+10:07:35.830 INFO  ProgressMeter -             unmapped             13.6              22341000        1645505.4
+10:07:45.860 INFO  ProgressMeter -             unmapped             13.7              23916000        1740087.9
+10:07:55.860 INFO  ProgressMeter -             unmapped             13.9              25758000        1851652.6
+10:08:05.861 INFO  ProgressMeter -             unmapped             14.1              27558000        1957591.9
+10:08:15.861 INFO  ProgressMeter -             unmapped             14.2              29356000        2060913.8
+10:08:25.956 INFO  ProgressMeter -             unmapped             14.4              31116000        2158971.7
+10:08:36.190 INFO  ProgressMeter -             unmapped             14.6              32916000        2257151.3
+10:08:46.194 INFO  ProgressMeter -             unmapped             14.7              34728000        2354488.6
+10:08:46.421 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+10:08:46.880 INFO  OverhangFixingManager - Overhang Fixing Manager saved 99243 reads in the first pass
+10:08:46.886 INFO  SplitNCigarReads - Starting traversal pass 2
+10:08:56.248 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000000:6335910             14.9              34985000        2345266.2
+10:09:06.281 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000000:10551875             15.1              35164000        2331134.6
+10:09:16.808 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000000:14677399             15.3              35307000        2313706.0
+10:09:26.813 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:2893857             15.4              35501000        2301269.9
+10:09:38.885 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:7109203             15.6              35662000        2281944.5
+10:09:48.906 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:10809780             15.8              35843000        2269274.4
+10:10:00.046 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000001:13532859             16.0              35989000        2252045.5
+10:10:10.490 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000002:3274958             16.2              36165000        2238676.6
+10:10:20.841 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000002:5968969             16.3              36345000        2226044.5
+10:10:30.864 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000002:8931401             16.5              36489000        2212229.9
+10:10:40.886 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000003:2818388             16.7              36659000        2200255.1
+10:10:50.961 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000003:4839379             16.8              36772000        2185016.1
+10:11:00.985 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000003:7826156             17.0              36953000        2174187.6
+10:11:11.025 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000004:77692             17.2              37078000        2160273.6
+10:11:21.091 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000004:4909028             17.3              37285000        2151305.9
+10:11:31.185 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000004:8669502             17.5              37452000        2140167.3
+10:11:41.213 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:721451             17.7              37595000        2128014.9
+10:11:51.225 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:2688623             17.8              37821000        2120776.0
+10:12:01.236 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:2804625             18.0              38025000        2112451.1
+10:12:11.260 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000005:6359229             18.2              38207000        2103045.0
+10:12:21.469 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000006:1151886             18.3              38328000        2090128.0
+10:12:31.671 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000006:5482627             18.5              38464000        2078273.9
+10:12:41.714 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000007:1265484             18.7              38694000        2071964.2
+10:12:51.776 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000007:3919062             18.8              38809000        2059625.1
+10:13:01.850 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000008:2385035             19.0              38961000        2049430.2
+10:13:11.901 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000008:5149914             19.2              39081000        2037786.0
+10:13:21.935 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000009:2015289             19.3              39253000        2029061.2
+10:13:31.954 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000009:5935951             19.5              39397000        2019076.8
+10:13:42.457 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000010:1782489             19.7              39540000        2008387.8
+10:13:53.283 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000010:4096708             19.9              39686000        1997496.8
+10:14:03.335 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000010:6211222             20.0              39802000        1986583.7
+10:14:13.363 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000011:4741446             20.2              40009000        1980395.2
+10:14:23.421 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000012:5771603             20.4              40118000        1969448.8
+10:14:33.474 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000013:2239252             20.5              40263000        1960441.9
+10:14:43.509 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000014:4335287             20.7              40424000        1952381.8
+10:14:53.934 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000015:2911138             20.9              40562000        1942745.5
+10:15:03.957 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000016:3073210             21.0              40745000        1936018.8
+10:15:14.040 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000018:55798             21.2              40871000        1926621.7
+10:15:24.045 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000019:1201192             21.4              41073000        1921043.6
+10:15:34.050 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000020:357353             21.5              41266000        1915135.5
+10:15:44.082 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000020:1877270             21.7              41416000        1907297.0
+10:15:54.117 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000021:2440364             21.9              41574000        1899938.0
+10:16:04.122 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000022:3463154             22.0              41722000        1892281.5
+10:16:14.475 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000023:2723189             22.2              41889000        1885103.0
+10:16:26.953 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000024:2427829             22.4              42089000        1876541.0
+10:16:36.991 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000028:2008160             22.6              42281000        1871145.7
+10:16:49.704 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000029:1880173             22.8              42461000        1861655.0
+10:16:59.706 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000032:1049201             23.0              42660000        1856809.0
+10:17:09.713 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000035:1203717             23.1              42837000        1851075.4
+10:17:19.745 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000039:257351             23.3              43038000        1846420.5
+10:17:29.761 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___Sc0000041:99554             23.5              43178000        1839253.1
+10:17:40.099 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:1618258             23.6              43437000        1836804.6
+10:17:50.116 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:3554818             23.8              43566000        1829344.8
+10:18:00.198 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:7519992             24.0              43716000        1822782.3
+10:18:10.249 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000000:11044990             24.2              43819000        1814403.8
+10:18:21.070 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:9520             24.3              43919000        1805064.7
+10:18:31.141 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:3571529             24.5              44115000        1800698.0
+10:18:41.186 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:6934749             24.7              44259000        1794314.1
+10:18:51.213 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000001:9959891             24.8              44385000        1787313.0
+10:19:01.227 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000002:3605745             25.0              44560000        1782381.0
+10:19:12.319 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000002:6105738             25.2              44675000        1773865.1
+10:19:22.346 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000003:722676             25.4              44827000        1768166.5
+10:19:32.369 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000003:4366032             25.5              44986000        1762822.6
+10:19:42.427 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000003:7599474             25.7              45097000        1755639.7
+10:19:53.095 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000004:4020878             25.9              45290000        1751032.9
+10:20:04.769 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000005:1143418             26.1              45472000        1744943.3
+10:20:15.004 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000005:3554784             26.2              45603000        1738589.5
+10:20:25.045 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000006:3561770             26.4              45717000        1731886.0
+10:20:35.053 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000007:375285             26.6              45837000        1725528.6
+10:20:45.063 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000007:3658087             26.7              45986000        1720333.3
+10:20:57.292 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000008:143014             26.9              46135000        1712847.3
+10:21:07.363 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000008:4455587             27.1              46324000        1709212.9
+10:21:17.390 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000009:1824989             27.3              46484000        1704605.7
+10:21:27.443 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000009:4214343             27.4              46581000        1697731.5
+10:21:37.475 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000011:597404             27.6              46742000        1693280.8
+10:21:48.412 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000011:1760702             27.8              46867000        1686671.3
+10:21:58.479 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000011:3781564             28.0              47009000        1681628.5
+10:22:08.606 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000012:4544613             28.1              47166000        1677118.7
+10:22:18.614 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000013:2774893             28.3              47296000        1671824.5
+10:22:28.662 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000014:3434170             28.5              47475000        1668277.3
+10:22:40.657 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000015:2694548             28.7              47615000        1661527.4
+10:22:50.715 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000016:3646186             28.8              47785000        1657759.5
+10:23:01.238 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000017:1024301             29.0              47948000        1653353.7
+10:23:11.246 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000017:3809791             29.2              48071000        1648115.6
+10:23:21.261 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000019:1987525             29.3              48266000        1645385.1
+10:23:31.292 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000020:2100207             29.5              48395000        1640434.3
+10:23:41.293 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000022:66696             29.7              48578000        1637385.2
+10:23:51.955 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000023:8096             29.8              48715000        1632226.6
+10:24:02.023 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000024:1577458             30.0              48906000        1629464.9
+10:24:13.250 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000026:55462             30.2              49030000        1623475.0
+10:24:23.267 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000027:858157             30.4              49218000        1620740.5
+10:24:33.326 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000029:1038202             30.5              49429000        1618752.1
+10:24:43.356 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000031:501189             30.7              49577000        1614758.9
+10:24:53.356 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000036:438421             30.9              49788000        1612875.9
+10:25:03.405 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000044:168285             31.0              50026000        1611840.7
+10:25:13.415 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xfSc0000223:22325             31.2              50249000        1610370.2
+10:25:23.427 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000387:3548865             31.4              50467000        1608752.7
+10:25:33.490 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000387:5431809             31.5              50605000        1604573.1
+10:25:43.514 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000387:8735318             31.7              50739000        1600344.4
+10:25:53.515 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000388:1175367             31.9              50905000        1597183.3
+10:26:03.519 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000390:367672             32.0              50999000        1591805.3
+10:26:13.551 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000393:602017             32.2              51170000        1588850.8
+10:26:23.557 INFO  ProgressMeter - Pocillopora_acuta_KBHIv2___xpSc0000396:285807             32.4              51335000        1585762.8
+10:26:33.823 INFO  ProgressMeter -             unmapped             32.5              52029000        1598750.8
+10:26:46.377 INFO  ProgressMeter -             unmapped             32.8              52779000        1611436.4
+10:26:56.611 INFO  ProgressMeter -             unmapped             32.9              53454000        1623590.2
+10:27:06.848 INFO  ProgressMeter -             unmapped             33.1              54204000        1637883.3
+10:27:18.295 INFO  ProgressMeter -             unmapped             33.3              54804000        1646520.6
+10:27:28.848 INFO  ProgressMeter -             unmapped             33.5              55479000        1658038.8
+10:27:39.511 INFO  ProgressMeter -             unmapped             33.6              56154000        1669345.5
+10:27:52.073 INFO  ProgressMeter -             unmapped             33.8              56829000        1678961.9
+10:28:02.148 INFO  ProgressMeter -             unmapped             34.0              57579000        1692722.5
+10:28:12.149 INFO  ProgressMeter -             unmapped             34.2              58318000        1706087.7
+10:28:22.151 INFO  ProgressMeter -             unmapped             34.3              58779000        1711228.9
+10:28:32.151 INFO  ProgressMeter -             unmapped             34.5              59449000        1722377.3
+10:28:42.151 INFO  ProgressMeter -             unmapped             34.7              60119000        1733418.6
+10:28:54.689 INFO  ProgressMeter -             unmapped             34.9              60804000        1742669.4
+10:29:04.690 INFO  ProgressMeter -             unmapped             35.1              61494000        1754065.5
+10:29:14.691 INFO  ProgressMeter -             unmapped             35.2              62208000        1766036.0
+10:29:26.928 INFO  ProgressMeter -             unmapped             35.4              62829000        1773396.9
+10:29:37.146 INFO  ProgressMeter -             unmapped             35.6              63504000        1783875.3
+10:29:47.499 INFO  ProgressMeter -             unmapped             35.8              64179000        1794139.5
+10:29:57.600 INFO  ProgressMeter -             unmapped             35.9              64704000        1800343.1
+10:30:09.545 INFO  ProgressMeter -             unmapped             36.1              65304000        1807027.9
+10:30:19.633 INFO  ProgressMeter -             unmapped             36.3              65979000        1817251.2
+10:30:29.635 INFO  ProgressMeter -             unmapped             36.5              66610000        1826245.7
+10:30:39.671 INFO  ProgressMeter -             unmapped             36.6              67254000        1835484.8
+10:30:50.613 INFO  ProgressMeter -             unmapped             36.8              67779000        1840651.9
+10:31:00.614 INFO  ProgressMeter -             unmapped             37.0              68415000        1849552.3
+10:31:11.046 INFO  ProgressMeter -             unmapped             37.2              69054000        1858092.6
+10:31:18.827 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+10:31:18.827 INFO  ProgressMeter -             unmapped             37.3              69576060        1865630.0
+10:31:18.827 INFO  ProgressMeter - Traversal complete. Processed 69576060 total reads in 37.3 minutes.
+10:32:58.071 INFO  SplitNCigarReads - Shutting down engine
+[February 7, 2022 at 10:32:58 AM EST] org.broadinstitute.hellbender.tools.walkers.rnaseq.SplitNCigarReads done. Elapsed time: 38.96 minutes.
+Runtime.totalMemory()=700448768
+[Mon 07 Feb 2022 10:32:58 AM EST]      CMD: touch Pacuta_HTAC_TP5_1303.SplitNCigarReads.done
+
+
+
+
+
+

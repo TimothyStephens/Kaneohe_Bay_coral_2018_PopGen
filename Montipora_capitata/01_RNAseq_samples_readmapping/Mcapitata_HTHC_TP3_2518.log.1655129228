@@ -1,0 +1,574 @@
+[Mon 13 Jun 2022 10:07:08 AM EDT]      LOG: Step 1 - StarAlign
+[Mon 13 Jun 2022 10:07:08 AM EDT]      CMD: STAR 			--genomeDir ../00_databases/STAR 			--runThreadN 8 			--readFilesIn /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R1_TrimmingRound2.fastq.gz /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R2_TrimmingRound2.fastq.gz 			--readFilesCommand "gunzip -c" 			--sjdbOverhang 149 			--outSAMtype BAM SortedByCoordinate 			--twopassMode Basic 			--outFileNamePrefix Mcapitata_HTHC_TP3_2518.STAR.
+Jun 13 10:07:08 ..... started STAR run
+Jun 13 10:07:08 ..... loading genome
+Jun 13 10:07:15 ..... started 1st pass mapping
+Jun 13 10:35:15 ..... finished 1st pass mapping
+Jun 13 10:35:15 ..... inserting junctions into the genome indices
+Jun 13 10:38:03 ..... started mapping
+Jun 13 11:13:22 ..... finished mapping
+Jun 13 11:13:23 ..... started sorting BAM
+Jun 13 11:14:12 ..... finished successfully
+[Mon 13 Jun 2022 11:14:14 AM EDT]      CMD: touch Mcapitata_HTHC_TP3_2518.STAR.done
+
+
+
+
+
+
+[Mon 13 Jun 2022 11:14:14 AM EDT]      LOG: Step 2.1 - FastqToSam
+[Mon 13 Jun 2022 11:14:14 AM EDT]      CMD: gatk FastqToSam 				--FASTQ /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R1_TrimmingRound2.fastq.gz 				--FASTQ2 /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R2_TrimmingRound2.fastq.gz 				--OUTPUT Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.bam 				--SAMPLE_NAME Mcapitata_HTHC_TP3_2518
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar FastqToSam --FASTQ /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R1_TrimmingRound2.fastq.gz --FASTQ2 /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R2_TrimmingRound2.fastq.gz --OUTPUT Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.bam --SAMPLE_NAME Mcapitata_HTHC_TP3_2518
+11:14:17.237 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Jun 13 11:14:17 EDT 2022] FastqToSam --FASTQ /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R1_TrimmingRound2.fastq.gz --FASTQ2 /scratch/timothy/TranscriptomeAnalysis_Mcapitata_Pacuta_TimeSeriesDE/RNA_Seq_data/trimming_cutadapt/Mcapitata_HTHC_TP3_2518_R2_TrimmingRound2.fastq.gz --OUTPUT Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.bam --SAMPLE_NAME Mcapitata_HTHC_TP3_2518 --USE_SEQUENTIAL_FASTQS false --READ_GROUP_NAME A --SORT_ORDER queryname --MIN_Q 0 --MAX_Q 93 --STRIP_UNPAIRED_MATE_NUMBER false --ALLOW_AND_IGNORE_EMPTY_LINES false --VERBOSITY INFO --QUIET false --VALIDATION_STRINGENCY STRICT --COMPRESSION_LEVEL 2 --MAX_RECORDS_IN_RAM 500000 --CREATE_INDEX false --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+Jun 13, 2022 11:14:17 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+[Mon Jun 13 11:14:17 EDT 2022] Executing as timothy@coral on Linux 5.4.0-110-generic amd64; OpenJDK 64-Bit Server VM 11.0.15+10-Ubuntu-0ubuntu0.20.04.1; Deflater: Intel; Inflater: Intel; Provider GCS is available; Picard version: Version:4.2.0.0
+INFO	2022-06-13 11:14:17	FastqToSam	Auto-detected quality format as: Standard.
+INFO	2022-06-13 11:14:26	FastqToSam	Processed     1,000,000 records.  Elapsed time: 00:00:09s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:14:37	FastqToSam	Processed     2,000,000 records.  Elapsed time: 00:00:20s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-06-13 11:14:48	FastqToSam	Processed     3,000,000 records.  Elapsed time: 00:00:31s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:14:59	FastqToSam	Processed     4,000,000 records.  Elapsed time: 00:00:42s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-06-13 11:15:10	FastqToSam	Processed     5,000,000 records.  Elapsed time: 00:00:52s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:15:20	FastqToSam	Processed     6,000,000 records.  Elapsed time: 00:01:02s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:15:29	FastqToSam	Processed     7,000,000 records.  Elapsed time: 00:01:12s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:15:39	FastqToSam	Processed     8,000,000 records.  Elapsed time: 00:01:22s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:15:49	FastqToSam	Processed     9,000,000 records.  Elapsed time: 00:01:31s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:15:59	FastqToSam	Processed    10,000,000 records.  Elapsed time: 00:01:42s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:16:10	FastqToSam	Processed    11,000,000 records.  Elapsed time: 00:01:52s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:16:20	FastqToSam	Processed    12,000,000 records.  Elapsed time: 00:02:02s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:16:30	FastqToSam	Processed    13,000,000 records.  Elapsed time: 00:02:12s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:16:40	FastqToSam	Processed    14,000,000 records.  Elapsed time: 00:02:22s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:16:50	FastqToSam	Processed    15,000,000 records.  Elapsed time: 00:02:33s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:17:00	FastqToSam	Processed    16,000,000 records.  Elapsed time: 00:02:43s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:17:10	FastqToSam	Processed    17,000,000 records.  Elapsed time: 00:02:53s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:17:20	FastqToSam	Processed    18,000,000 records.  Elapsed time: 00:03:03s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:17:31	FastqToSam	Processed    19,000,000 records.  Elapsed time: 00:03:13s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:17:41	FastqToSam	Processed    20,000,000 records.  Elapsed time: 00:03:23s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:17:52	FastqToSam	Processed    21,000,000 records.  Elapsed time: 00:03:34s.  Time for last 1,000,000:   11s.  Last read position: */*
+INFO	2022-06-13 11:18:02	FastqToSam	Processed    22,000,000 records.  Elapsed time: 00:03:45s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:18:13	FastqToSam	Processed    23,000,000 records.  Elapsed time: 00:03:56s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:18:24	FastqToSam	Processed    24,000,000 records.  Elapsed time: 00:04:06s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:18:34	FastqToSam	Processed    25,000,000 records.  Elapsed time: 00:04:16s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:18:45	FastqToSam	Processed    26,000,000 records.  Elapsed time: 00:04:27s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:18:55	FastqToSam	Processed    27,000,000 records.  Elapsed time: 00:04:37s.  Time for last 1,000,000:    9s.  Last read position: */*
+INFO	2022-06-13 11:19:05	FastqToSam	Processed    28,000,000 records.  Elapsed time: 00:04:47s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:19:15	FastqToSam	Processed    29,000,000 records.  Elapsed time: 00:04:58s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:19:26	FastqToSam	Processed    30,000,000 records.  Elapsed time: 00:05:08s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:19:36	FastqToSam	Processed    31,000,000 records.  Elapsed time: 00:05:19s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:19:47	FastqToSam	Processed    32,000,000 records.  Elapsed time: 00:05:29s.  Time for last 1,000,000:   10s.  Last read position: */*
+INFO	2022-06-13 11:19:55	FastqToSam	Processed 16274155 fastq reads
+[Mon Jun 13 11:21:25 EDT 2022] picard.sam.FastqToSam done. Elapsed time: 7.14 minutes.
+Runtime.totalMemory()=490733568
+Tool returned:
+0
+[Mon 13 Jun 2022 11:21:25 AM EDT]      CMD: touch Mcapitata_HTHC_TP3_2518.FastqToSam.done
+[Mon 13 Jun 2022 11:21:25 AM EDT]      LOG: Step 2.2 - collect_RG
+[Mon 13 Jun 2022 11:21:25 AM EDT]      CMD: samtools view Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.bam 				| rgsam collect --format sam --qnformat illumina-1.8 -s Mcapitata_HTHC_TP3_2518 -o Mcapitata_HTHC_TP3_2518.collect_RG.txt
+Info: reading from stdin
+[Mon 13 Jun 2022 11:23:15 AM EDT]      CMD: samtools view -h Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.bam 				| rgsam tag --qnformat illumina-1.8 -r Mcapitata_HTHC_TP3_2518.collect_RG.txt 				| samtools view -b - 				> Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.rg.bam
+Info: reading from stdin
+Info: writing to stdout
+[Mon 13 Jun 2022 11:34:02 AM EDT]      CMD: touch Mcapitata_HTHC_TP3_2518.collect_RG.done
+[Mon 13 Jun 2022 11:34:02 AM EDT]      LOG: Step 2.3 - MergeBamAlignment
+[Mon 13 Jun 2022 11:34:02 AM EDT]      CMD: gatk MergeBamAlignment 					--REFERENCE_SEQUENCE Montipora_capitata_KBHIv3.assembly.fasta 					--UNMAPPED_BAM Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.rg.bam 					--ALIGNED_BAM Mcapitata_HTHC_TP3_2518.STAR.Aligned.sortedByCoord.out.bam 					--OUTPUT Mcapitata_HTHC_TP3_2518.MergeBamAlignment.merged.bam 					--INCLUDE_SECONDARY_ALIGNMENTS false 					--VALIDATION_STRINGENCY SILENT
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar MergeBamAlignment --REFERENCE_SEQUENCE Montipora_capitata_KBHIv3.assembly.fasta --UNMAPPED_BAM Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.rg.bam --ALIGNED_BAM Mcapitata_HTHC_TP3_2518.STAR.Aligned.sortedByCoord.out.bam --OUTPUT Mcapitata_HTHC_TP3_2518.MergeBamAlignment.merged.bam --INCLUDE_SECONDARY_ALIGNMENTS false --VALIDATION_STRINGENCY SILENT
+11:34:05.739 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Jun 13 11:34:05 EDT 2022] MergeBamAlignment --UNMAPPED_BAM Mcapitata_HTHC_TP3_2518.FastqToSam.unmapped.rg.bam --ALIGNED_BAM Mcapitata_HTHC_TP3_2518.STAR.Aligned.sortedByCoord.out.bam --OUTPUT Mcapitata_HTHC_TP3_2518.MergeBamAlignment.merged.bam --INCLUDE_SECONDARY_ALIGNMENTS false --VALIDATION_STRINGENCY SILENT --REFERENCE_SEQUENCE Montipora_capitata_KBHIv3.assembly.fasta --ADD_PG_TAG_TO_READS true --PAIRED_RUN true --CLIP_ADAPTERS true --IS_BISULFITE_SEQUENCE false --ALIGNED_READS_ONLY false --MAX_INSERTIONS_OR_DELETIONS 1 --ATTRIBUTES_TO_REVERSE OQ --ATTRIBUTES_TO_REVERSE U2 --ATTRIBUTES_TO_REVERSE_COMPLEMENT E2 --ATTRIBUTES_TO_REVERSE_COMPLEMENT SQ --READ1_TRIM 0 --READ2_TRIM 0 --ALIGNER_PROPER_PAIR_FLAGS false --SORT_ORDER coordinate --PRIMARY_ALIGNMENT_STRATEGY BestMapq --CLIP_OVERLAPPING_READS true --HARD_CLIP_OVERLAPPING_READS false --ADD_MATE_CIGAR true --UNMAP_CONTAMINANT_READS false --MIN_UNCLIPPED_BASES 32 --MATCHING_DICTIONARY_TAGS M5 --MATCHING_DICTIONARY_TAGS LN --UNMAPPED_READ_STRATEGY DO_NOT_CHANGE --VERBOSITY INFO --QUIET false --COMPRESSION_LEVEL 2 --MAX_RECORDS_IN_RAM 500000 --CREATE_INDEX false --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+Jun 13, 2022 11:34:05 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+[Mon Jun 13 11:34:06 EDT 2022] Executing as timothy@coral on Linux 5.4.0-110-generic amd64; OpenJDK 64-Bit Server VM 11.0.15+10-Ubuntu-0ubuntu0.20.04.1; Deflater: Intel; Inflater: Intel; Provider GCS is available; Picard version: Version:4.2.0.0
+INFO	2022-06-13 11:34:06	SamAlignmentMerger	Processing SAM file(s): [Mcapitata_HTHC_TP3_2518.STAR.Aligned.sortedByCoord.out.bam]
+WARNING	2022-06-13 11:34:06	SamAlignmentMerger	Exception merging bam alignment - attempting to sort aligned reads and try again: Underlying iterator is not queryname sorted: GWNJ-0957:502:GW1910282606th:4:1113:21582:54207 2/2 93b aligned to Montipora_capitata_KBHIv3___Scaffold_1:1538-1630. > GWNJ-0957:502:GW1910282606th:3:1223:4767:47755 1/2 148b aligned to Montipora_capitata_KBHIv3___Scaffold_1:5608-5753.
+INFO	2022-06-13 11:34:13	SamAlignmentMerger	Read 1000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:20	SamAlignmentMerger	Read 2000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:26	SamAlignmentMerger	Read 3000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:31	SamAlignmentMerger	Read 4000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:37	SamAlignmentMerger	Read 5000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:43	SamAlignmentMerger	Read 6000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:49	SamAlignmentMerger	Read 7000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:34:55	SamAlignmentMerger	Read 8000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:00	SamAlignmentMerger	Read 9000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:06	SamAlignmentMerger	Read 10000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:12	SamAlignmentMerger	Read 11000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:18	SamAlignmentMerger	Read 12000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:23	SamAlignmentMerger	Read 13000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:29	SamAlignmentMerger	Read 14000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:34	SamAlignmentMerger	Read 15000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:40	SamAlignmentMerger	Read 16000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:46	SamAlignmentMerger	Read 17000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:52	SamAlignmentMerger	Read 18000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:35:58	SamAlignmentMerger	Read 19000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:04	SamAlignmentMerger	Read 20000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:10	SamAlignmentMerger	Read 21000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:16	SamAlignmentMerger	Read 22000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:22	SamAlignmentMerger	Read 23000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:27	SamAlignmentMerger	Read 24000000 records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:32	SamAlignmentMerger	Finished reading 24607999 total records from alignment SAM/BAM.
+INFO	2022-06-13 11:36:34	AbstractAlignmentMerger	Seen many non-increasing record positions. Printing Read-names as well.
+INFO	2022-06-13 11:36:57	AbstractAlignmentMerger	Merged     1,000,000 records.  Elapsed time: 00:02:51s.  Time for last 1,000,000:   23s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_70:219,786.  Last read name: A00387:181:GW191020342nd:1:1218:12201:21997
+INFO	2022-06-13 11:37:19	AbstractAlignmentMerger	Merged     2,000,000 records.  Elapsed time: 00:03:13s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_7:16,960,398.  Last read name: A00387:181:GW191020342nd:1:1334:1705:34851
+INFO	2022-06-13 11:37:43	AbstractAlignmentMerger	Merged     3,000,000 records.  Elapsed time: 00:03:37s.  Time for last 1,000,000:   23s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_13:25,926,240.  Last read name: A00387:181:GW191020342nd:1:1450:16025:29872
+INFO	2022-06-13 11:38:05	AbstractAlignmentMerger	Merged     4,000,000 records.  Elapsed time: 00:03:59s.  Time for last 1,000,000:   21s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_6:34,924,207.  Last read name: A00387:181:GW191020342nd:1:1566:10917:27727
+INFO	2022-06-13 11:38:30	AbstractAlignmentMerger	Merged     5,000,000 records.  Elapsed time: 00:04:24s.  Time for last 1,000,000:   25s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_10:67,714,405.  Last read name: A00387:181:GW191020342nd:1:2104:2293:24846
+INFO	2022-06-13 11:38:53	AbstractAlignmentMerger	Merged     6,000,000 records.  Elapsed time: 00:04:47s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_2:50,085,542.  Last read name: A00387:181:GW191020342nd:1:2236:5999:30765
+INFO	2022-06-13 11:39:18	AbstractAlignmentMerger	Merged     7,000,000 records.  Elapsed time: 00:05:12s.  Time for last 1,000,000:   25s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_10:48,673,421.  Last read name: A00387:181:GW191020342nd:1:2367:27887:31344
+INFO	2022-06-13 11:39:39	AbstractAlignmentMerger	Merged     8,000,000 records.  Elapsed time: 00:05:33s.  Time for last 1,000,000:   20s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_4:8,259,631.  Last read name: A00387:181:GW191020342nd:1:2526:32868:14544
+INFO	2022-06-13 11:40:00	AbstractAlignmentMerger	Merged     9,000,000 records.  Elapsed time: 00:05:54s.  Time for last 1,000,000:   21s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_6:3,316,474.  Last read name: A00387:181:GW191020342nd:1:2652:2944:10347
+INFO	2022-06-13 11:40:22	AbstractAlignmentMerger	Merged    10,000,000 records.  Elapsed time: 00:06:16s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_8:64,489,315.  Last read name: GWNJ-0957:502:GW1910282606th:3:1114:12631:71295
+INFO	2022-06-13 11:40:45	AbstractAlignmentMerger	Merged    11,000,000 records.  Elapsed time: 00:06:39s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_2:20,841,273.  Last read name: GWNJ-0957:502:GW1910282606th:3:1207:10581:50762
+INFO	2022-06-13 11:41:08	AbstractAlignmentMerger	Merged    12,000,000 records.  Elapsed time: 00:07:02s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_8:52,968,606.  Last read name: GWNJ-0957:502:GW1910282606th:3:1223:28574:47826
+INFO	2022-06-13 11:41:28	AbstractAlignmentMerger	Merged    13,000,000 records.  Elapsed time: 00:07:22s.  Time for last 1,000,000:   20s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_14:33,551,604.  Last read name: GWNJ-0957:502:GW1910282606th:3:2117:23886:28804
+INFO	2022-06-13 11:41:53	AbstractAlignmentMerger	Merged    14,000,000 records.  Elapsed time: 00:07:47s.  Time for last 1,000,000:   25s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_1303:12,946.  Last read name: GWNJ-0957:502:GW1910282606th:3:2211:24586:48406
+INFO	2022-06-13 11:42:13	AbstractAlignmentMerger	Merged    15,000,000 records.  Elapsed time: 00:08:07s.  Time for last 1,000,000:   20s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_14:30,369,562.  Last read name: GWNJ-0957:502:GW1910282606th:4:1105:10125:43818
+INFO	2022-06-13 11:42:37	AbstractAlignmentMerger	Merged    16,000,000 records.  Elapsed time: 00:08:31s.  Time for last 1,000,000:   23s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_4:2,020,442.  Last read name: GWNJ-0957:502:GW1910282606th:4:1121:26768:29226
+INFO	2022-06-13 11:42:59	AbstractAlignmentMerger	Merged    17,000,000 records.  Elapsed time: 00:08:53s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_2:7,556,212.  Last read name: GWNJ-0957:502:GW1910282606th:4:1214:24332:6337
+INFO	2022-06-13 11:43:22	AbstractAlignmentMerger	Merged    18,000,000 records.  Elapsed time: 00:09:16s.  Time for last 1,000,000:   22s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_5:35,425,029.  Last read name: GWNJ-0957:502:GW1910282606th:4:2107:26372:46085
+INFO	2022-06-13 11:43:43	AbstractAlignmentMerger	Merged    19,000,000 records.  Elapsed time: 00:09:37s.  Time for last 1,000,000:   21s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_9:36,306,500.  Last read name: GWNJ-0957:502:GW1910282606th:4:2124:15087:33428
+INFO	2022-06-13 11:44:02	AbstractAlignmentMerger	Merged    20,000,000 records.  Elapsed time: 00:09:56s.  Time for last 1,000,000:   19s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_8:68,209,568.  Last read name: GWNJ-0957:502:GW1910282606th:4:2217:25855:7743
+INFO	2022-06-13 11:45:16	AbstractAlignmentMerger	Written in coordinate order to output    10,000,000 records.  Elapsed time: 00:01:01s.  Time for last 10,000,000:   60s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_7:18,582,318
+INFO	2022-06-13 11:46:17	AbstractAlignmentMerger	Written in coordinate order to output    20,000,000 records.  Elapsed time: 00:02:02s.  Time for last 10,000,000:   60s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_171:69,003
+INFO	2022-06-13 11:46:42	AbstractAlignmentMerger	Written in coordinate order to output    30,000,000 records.  Elapsed time: 00:02:27s.  Time for last 10,000,000:   24s.  Last read position: */*
+INFO	2022-06-13 11:46:49	AbstractAlignmentMerger	Wrote 24531249 alignment records and 12137440 unmapped reads.
+[Mon Jun 13 11:46:49 EDT 2022] picard.sam.MergeBamAlignment done. Elapsed time: 12.73 minutes.
+Runtime.totalMemory()=545259520
+Tool returned:
+0
+[Mon 13 Jun 2022 11:46:49 AM EDT]      CMD: touch Mcapitata_HTHC_TP3_2518.MergeBamAlignment.done
+
+
+
+
+
+
+[Mon 13 Jun 2022 11:46:49 AM EDT]      LOG: Step 3 - MarkDuplicates
+[Mon 13 Jun 2022 11:46:49 AM EDT]      CMD: gatk MarkDuplicates 					--INPUT Mcapitata_HTHC_TP3_2518.MergeBamAlignment.merged.bam 					--OUTPUT Mcapitata_HTHC_TP3_2518.MarkDuplicates.dedupped.bam 					--CREATE_INDEX true 					--VALIDATION_STRINGENCY SILENT 					--METRICS_FILE Mcapitata_HTHC_TP3_2518.MarkDuplicates.metrics
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar MarkDuplicates --INPUT Mcapitata_HTHC_TP3_2518.MergeBamAlignment.merged.bam --OUTPUT Mcapitata_HTHC_TP3_2518.MarkDuplicates.dedupped.bam --CREATE_INDEX true --VALIDATION_STRINGENCY SILENT --METRICS_FILE Mcapitata_HTHC_TP3_2518.MarkDuplicates.metrics
+11:46:52.503 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Jun 13 11:46:52 EDT 2022] MarkDuplicates --INPUT Mcapitata_HTHC_TP3_2518.MergeBamAlignment.merged.bam --OUTPUT Mcapitata_HTHC_TP3_2518.MarkDuplicates.dedupped.bam --METRICS_FILE Mcapitata_HTHC_TP3_2518.MarkDuplicates.metrics --VALIDATION_STRINGENCY SILENT --CREATE_INDEX true --MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP 50000 --MAX_FILE_HANDLES_FOR_READ_ENDS_MAP 8000 --SORTING_COLLECTION_SIZE_RATIO 0.25 --TAG_DUPLICATE_SET_MEMBERS false --REMOVE_SEQUENCING_DUPLICATES false --TAGGING_POLICY DontTag --CLEAR_DT true --DUPLEX_UMI false --ADD_PG_TAG_TO_READS true --REMOVE_DUPLICATES false --ASSUME_SORTED false --DUPLICATE_SCORING_STRATEGY SUM_OF_BASE_QUALITIES --PROGRAM_RECORD_ID MarkDuplicates --PROGRAM_GROUP_NAME MarkDuplicates --READ_NAME_REGEX <optimized capture of last three ':' separated fields as numeric values> --OPTICAL_DUPLICATE_PIXEL_DISTANCE 100 --MAX_OPTICAL_DUPLICATE_SET_SIZE 300000 --VERBOSITY INFO --QUIET false --COMPRESSION_LEVEL 2 --MAX_RECORDS_IN_RAM 500000 --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+Jun 13, 2022 11:46:52 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+[Mon Jun 13 11:46:52 EDT 2022] Executing as timothy@coral on Linux 5.4.0-110-generic amd64; OpenJDK 64-Bit Server VM 11.0.15+10-Ubuntu-0ubuntu0.20.04.1; Deflater: Intel; Inflater: Intel; Provider GCS is available; Picard version: Version:4.2.0.0
+INFO	2022-06-13 11:46:52	MarkDuplicates	Start of doWork freeMemory: 114298904; totalMemory: 142606336; maxMemory: 32178700288
+INFO	2022-06-13 11:46:52	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2022-06-13 11:46:52	MarkDuplicates	Will retain up to 116589493 data points before spilling to disk.
+INFO	2022-06-13 11:46:59	MarkDuplicates	Read     1,000,000 records.  Elapsed time: 00:00:05s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_1:35,857,146
+INFO	2022-06-13 11:46:59	MarkDuplicates	Tracking 438 as yet unmatched pairs. 438 records in RAM.
+INFO	2022-06-13 11:47:05	MarkDuplicates	Read     2,000,000 records.  Elapsed time: 00:00:11s.  Time for last 1,000,000:    6s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_2:10,342,386
+INFO	2022-06-13 11:47:05	MarkDuplicates	Tracking 354 as yet unmatched pairs. 354 records in RAM.
+INFO	2022-06-13 11:47:10	MarkDuplicates	Read     3,000,000 records.  Elapsed time: 00:00:16s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_2:48,854,246
+INFO	2022-06-13 11:47:10	MarkDuplicates	Tracking 36 as yet unmatched pairs. 36 records in RAM.
+INFO	2022-06-13 11:47:15	MarkDuplicates	Read     4,000,000 records.  Elapsed time: 00:00:21s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_3:34,517,777
+INFO	2022-06-13 11:47:15	MarkDuplicates	Tracking 26 as yet unmatched pairs. 26 records in RAM.
+INFO	2022-06-13 11:47:20	MarkDuplicates	Read     5,000,000 records.  Elapsed time: 00:00:26s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_4:13,083,036
+INFO	2022-06-13 11:47:20	MarkDuplicates	Tracking 196 as yet unmatched pairs. 196 records in RAM.
+INFO	2022-06-13 11:47:26	MarkDuplicates	Read     6,000,000 records.  Elapsed time: 00:00:33s.  Time for last 1,000,000:    6s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_5:2,977,203
+INFO	2022-06-13 11:47:26	MarkDuplicates	Tracking 6 as yet unmatched pairs. 6 records in RAM.
+INFO	2022-06-13 11:47:31	MarkDuplicates	Read     7,000,000 records.  Elapsed time: 00:00:37s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_5:34,819,105
+INFO	2022-06-13 11:47:31	MarkDuplicates	Tracking 8 as yet unmatched pairs. 8 records in RAM.
+INFO	2022-06-13 11:47:36	MarkDuplicates	Read     8,000,000 records.  Elapsed time: 00:00:42s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_6:3,150,249
+INFO	2022-06-13 11:47:36	MarkDuplicates	Tracking 44 as yet unmatched pairs. 44 records in RAM.
+INFO	2022-06-13 11:47:43	MarkDuplicates	Read     9,000,000 records.  Elapsed time: 00:00:49s.  Time for last 1,000,000:    6s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_6:34,924,401
+INFO	2022-06-13 11:47:43	MarkDuplicates	Tracking 6908 as yet unmatched pairs. 6908 records in RAM.
+INFO	2022-06-13 11:47:48	MarkDuplicates	Read    10,000,000 records.  Elapsed time: 00:00:54s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_7:18,582,318
+INFO	2022-06-13 11:47:48	MarkDuplicates	Tracking 8 as yet unmatched pairs. 8 records in RAM.
+INFO	2022-06-13 11:47:52	MarkDuplicates	Read    11,000,000 records.  Elapsed time: 00:00:59s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_8:23,532,850
+INFO	2022-06-13 11:47:52	MarkDuplicates	Tracking 13 as yet unmatched pairs. 13 records in RAM.
+INFO	2022-06-13 11:47:57	MarkDuplicates	Read    12,000,000 records.  Elapsed time: 00:01:04s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_8:62,912,881
+INFO	2022-06-13 11:47:57	MarkDuplicates	Tracking 12 as yet unmatched pairs. 12 records in RAM.
+INFO	2022-06-13 11:48:04	MarkDuplicates	Read    13,000,000 records.  Elapsed time: 00:01:10s.  Time for last 1,000,000:    6s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_9:34,721,152
+INFO	2022-06-13 11:48:04	MarkDuplicates	Tracking 8 as yet unmatched pairs. 8 records in RAM.
+INFO	2022-06-13 11:48:10	MarkDuplicates	Read    14,000,000 records.  Elapsed time: 00:01:16s.  Time for last 1,000,000:    6s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_10:43,023,511
+INFO	2022-06-13 11:48:10	MarkDuplicates	Tracking 4 as yet unmatched pairs. 4 records in RAM.
+INFO	2022-06-13 11:48:15	MarkDuplicates	Read    15,000,000 records.  Elapsed time: 00:01:22s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_11:12,107,466
+INFO	2022-06-13 11:48:15	MarkDuplicates	Tracking 6 as yet unmatched pairs. 6 records in RAM.
+INFO	2022-06-13 11:48:21	MarkDuplicates	Read    16,000,000 records.  Elapsed time: 00:01:27s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_11:53,286,026
+INFO	2022-06-13 11:48:21	MarkDuplicates	Tracking 10 as yet unmatched pairs. 10 records in RAM.
+INFO	2022-06-13 11:48:26	MarkDuplicates	Read    17,000,000 records.  Elapsed time: 00:01:33s.  Time for last 1,000,000:    5s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_12:29,875,892
+INFO	2022-06-13 11:48:26	MarkDuplicates	Tracking 2 as yet unmatched pairs. 2 records in RAM.
+INFO	2022-06-13 11:48:31	MarkDuplicates	Read    18,000,000 records.  Elapsed time: 00:01:37s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_13:25,514,152
+INFO	2022-06-13 11:48:31	MarkDuplicates	Tracking 8 as yet unmatched pairs. 8 records in RAM.
+INFO	2022-06-13 11:48:35	MarkDuplicates	Read    19,000,000 records.  Elapsed time: 00:01:42s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_14:8,916,369
+INFO	2022-06-13 11:48:35	MarkDuplicates	Tracking 24 as yet unmatched pairs. 24 records in RAM.
+INFO	2022-06-13 11:48:40	MarkDuplicates	Read    20,000,000 records.  Elapsed time: 00:01:46s.  Time for last 1,000,000:    4s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_171:69,003
+INFO	2022-06-13 11:48:40	MarkDuplicates	Tracking 2 as yet unmatched pairs. 2 records in RAM.
+INFO	2022-06-13 11:48:42	MarkDuplicates	Read 20449392 records. 0 pairs never matched.
+INFO	2022-06-13 11:48:43	MarkDuplicates	After buildSortedReadEndLists freeMemory: 6070780992; totalMemory: 9244246016; maxMemory: 32178700288
+INFO	2022-06-13 11:48:43	MarkDuplicates	Will retain up to 1005584384 duplicate indices before spilling to disk.
+INFO	2022-06-13 11:48:49	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2022-06-13 11:48:52	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2022-06-13 11:48:54	MarkDuplicates	Sorting list of duplicate records.
+INFO	2022-06-13 11:48:54	MarkDuplicates	After generateDuplicateIndexes freeMemory: 9210016096; totalMemory: 17293115392; maxMemory: 32178700288
+INFO	2022-06-13 11:48:54	MarkDuplicates	Marking 4097823 records as duplicates.
+INFO	2022-06-13 11:48:54	MarkDuplicates	Found 45264 optical duplicate clusters.
+INFO	2022-06-13 11:48:54	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2022-06-13 11:49:51	MarkDuplicates	Written    10,000,000 records.  Elapsed time: 00:00:56s.  Time for last 10,000,000:   56s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_7:18,582,318
+INFO	2022-06-13 11:50:50	MarkDuplicates	Written    20,000,000 records.  Elapsed time: 00:01:55s.  Time for last 10,000,000:   58s.  Last read position: Montipora_capitata_KBHIv3___Scaffold_171:69,003
+INFO	2022-06-13 11:51:48	MarkDuplicates	Written    30,000,000 records.  Elapsed time: 00:02:53s.  Time for last 10,000,000:   58s.  Last read position: */*
+INFO	2022-06-13 11:52:04	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2022-06-13 11:52:04	MarkDuplicates	Duplicate Index cleanup.
+INFO	2022-06-13 11:52:04	MarkDuplicates	Getting Memory Stats.
+INFO	2022-06-13 11:52:06	MarkDuplicates	Before output close freeMemory: 420958072; totalMemory: 461373440; maxMemory: 32178700288
+INFO	2022-06-13 11:52:06	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2022-06-13 11:52:06	MarkDuplicates	After output close freeMemory: 189708096; totalMemory: 226492416; maxMemory: 32178700288
+[Mon Jun 13 11:52:06 EDT 2022] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 5.24 minutes.
+Runtime.totalMemory()=226492416
+Tool returned:
+0
+[Mon 13 Jun 2022 11:52:06 AM EDT]      CMD: touch Mcapitata_HTHC_TP3_2518.MarkDuplicates.done
+
+
+
+
+
+
+[Mon 13 Jun 2022 11:52:06 AM EDT]      LOG: Step 4 - SplitNCigarReads
+[Mon 13 Jun 2022 11:52:06 AM EDT]      CMD: gatk SplitNCigarReads 					-R Montipora_capitata_KBHIv3.assembly.fasta 					-I Mcapitata_HTHC_TP3_2518.MarkDuplicates.dedupped.bam 					-O Mcapitata_HTHC_TP3_2518.SplitNCigarReads.split.bam
+Using GATK jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar SplitNCigarReads -R Montipora_capitata_KBHIv3.assembly.fasta -I Mcapitata_HTHC_TP3_2518.MarkDuplicates.dedupped.bam -O Mcapitata_HTHC_TP3_2518.SplitNCigarReads.split.bam
+11:52:09.935 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/timothy/programs/gatk-4.2.0.0/gatk-package-4.2.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jun 13, 2022 11:52:10 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+11:52:10.129 INFO  SplitNCigarReads - ------------------------------------------------------------
+11:52:10.130 INFO  SplitNCigarReads - The Genome Analysis Toolkit (GATK) v4.2.0.0
+11:52:10.130 INFO  SplitNCigarReads - For support and documentation go to https://software.broadinstitute.org/gatk/
+11:52:10.130 INFO  SplitNCigarReads - Executing as timothy@coral on Linux v5.4.0-110-generic amd64
+11:52:10.130 INFO  SplitNCigarReads - Java runtime: OpenJDK 64-Bit Server VM v11.0.15+10-Ubuntu-0ubuntu0.20.04.1
+11:52:10.130 INFO  SplitNCigarReads - Start Date/Time: June 13, 2022 at 11:52:09 AM EDT
+11:52:10.130 INFO  SplitNCigarReads - ------------------------------------------------------------
+11:52:10.130 INFO  SplitNCigarReads - ------------------------------------------------------------
+11:52:10.131 INFO  SplitNCigarReads - HTSJDK Version: 2.24.0
+11:52:10.132 INFO  SplitNCigarReads - Picard Version: 2.25.0
+11:52:10.132 INFO  SplitNCigarReads - Built for Spark Version: 2.4.5
+11:52:10.132 INFO  SplitNCigarReads - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+11:52:10.132 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+11:52:10.132 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+11:52:10.132 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+11:52:10.132 INFO  SplitNCigarReads - Deflater: IntelDeflater
+11:52:10.132 INFO  SplitNCigarReads - Inflater: IntelInflater
+11:52:10.132 INFO  SplitNCigarReads - GCS max retries/reopens: 20
+11:52:10.132 INFO  SplitNCigarReads - Requester pays: disabled
+11:52:10.132 INFO  SplitNCigarReads - Initializing engine
+11:52:10.566 INFO  SplitNCigarReads - Done initializing engine
+11:52:10.701 INFO  ProgressMeter - Starting traversal
+11:52:10.702 INFO  ProgressMeter -        Current Locus  Elapsed Minutes       Reads Processed     Reads/Minute
+11:52:20.830 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:4191396              0.2                198000        1173217.5
+11:52:30.901 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:7965119              0.3                379000        1125854.0
+11:52:40.914 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:13811852              0.5                565000        1122145.0
+11:52:50.977 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:23628049              0.7                736000        1096489.1
+11:53:00.998 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:32995415              0.8                897000        1070086.5
+11:53:11.014 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:36601693              1.0               1056000        1050537.2
+11:53:21.018 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:41664509              1.2               1204000        1027362.2
+11:53:31.023 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:46148349              1.3               1379000        1030129.5
+11:53:41.032 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:1186174              1.5               1549000        1028894.1
+11:53:51.064 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:4371416              1.7               1749000        1045625.3
+11:54:01.095 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:9657502              1.8               1895000        1029965.9
+11:54:11.139 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:10657690              2.0               2086000        1039215.5
+11:54:21.157 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:16360570              2.2               2249000        1034387.6
+11:54:31.191 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:26250027              2.3               2449000        1045918.2
+11:54:41.194 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:32902778              2.5               2646000        1054946.8
+11:54:51.299 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:42859207              2.7               2830000        1057304.9
+11:55:01.302 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:49430279              2.8               3021000        1062491.6
+11:55:11.489 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:90448              3.0               3215000        1067013.3
+11:55:21.489 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:4322437              3.2               3430000        1078689.8
+11:55:31.525 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:12254109              3.3               3606000        1077366.6
+11:55:41.568 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:19176206              3.5               3809000        1083816.3
+11:55:51.572 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:34345875              3.7               3994000        1084982.1
+11:56:01.610 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:41489860              3.8               4188000        1088225.6
+11:56:11.762 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:44869017              4.0               4334000        1078740.1
+11:56:21.773 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:453414              4.2               4516000        1079216.6
+11:56:31.835 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:4243314              4.4               4722000        1084964.4
+11:56:41.888 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:9102177              4.5               4892000        1082356.8
+11:56:51.964 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:13799565              4.7               5070000        1081557.7
+11:57:01.964 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:25174952              4.9               5251000        1081706.5
+11:57:11.998 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:37019687              5.0               5435000        1082324.4
+11:57:22.079 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:41250764              5.2               5618000        1082549.7
+11:57:32.097 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:46253583              5.4               5845000        1091180.6
+11:57:42.132 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:4292814              5.5               6035000        1092538.4
+11:57:52.132 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:11374695              5.7               6225000        1093928.5
+11:58:02.193 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:15384949              5.9               6370000        1087370.9
+11:58:12.210 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:18952944              6.0               6553000        1087613.8
+11:58:22.289 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:24383718              6.2               6716000        1084429.8
+11:58:32.364 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:30792353              6.4               6887000        1082685.7
+11:58:42.390 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:37612550              6.5               7058000        1081166.6
+11:58:52.414 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:45702441              6.7               7242000        1081673.1
+11:59:02.449 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:53269331              6.9               7425000        1081975.1
+11:59:12.491 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:58787913              7.0               7599000        1080967.0
+11:59:22.537 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:61819525              7.2               7773000        1079995.8
+11:59:32.622 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:2636380              7.4               7974000        1082641.8
+11:59:42.883 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:6576094              7.5               8164000        1083283.0
+11:59:52.917 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:13441901              7.7               8353000        1084302.9
+12:00:02.948 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:26251063              7.9               8536000        1084519.5
+12:00:12.959 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:32890444              8.0               8716000        1084401.1
+12:00:23.156 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:34924089              8.2               8909000        1085461.8
+12:00:33.222 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:35911733              8.4               9151000        1092615.4
+12:00:43.238 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:1429050              8.5               9364000        1096196.2
+12:00:53.261 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:6121911              8.7               9530000        1094230.5
+12:01:03.290 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:11466725              8.9               9696000        1092326.5
+12:01:13.307 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:16048440              9.0               9843000        1088416.1
+12:01:23.375 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:18420707              9.2               9995000        1085090.1
+12:01:33.400 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:1051310              9.4              10155000        1082820.8
+12:01:43.408 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:5762746              9.5              10302000        1079297.2
+12:01:53.478 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:11662258              9.7              10449000        1075782.1
+12:02:03.515 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:15910415              9.9              10599000        1072749.8
+12:02:13.563 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:18404277             10.0              10755000        1070396.0
+12:02:23.645 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:20823194             10.2              10889000        1065908.4
+12:02:33.698 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:24123736             10.4              11035000        1062767.7
+12:02:43.711 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:30985905             10.6              11195000        1061122.4
+12:02:53.712 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:38154760             10.7              11352000        1059268.1
+12:03:03.720 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:50713164             10.9              11517000        1058194.4
+12:03:13.751 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:53603919             11.1              11675000        1056483.0
+12:03:23.844 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:57887418             11.2              11818000        1053388.4
+12:03:33.848 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:62784011             11.4              11994000        1053420.5
+12:03:44.175 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:66703575             11.6              12151000        1051317.1
+12:03:54.223 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:2531342             11.7              12337000        1052164.8
+12:04:04.237 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:5625904             11.9              12497000        1050852.4
+12:04:14.257 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:11732392             12.1              12655000        1049401.9
+12:04:24.304 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:27865360             12.2              12812000        1047872.1
+12:04:34.331 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:32002610             12.4              12930000        1043263.6
+12:04:44.440 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:36376849             12.6              13097000        1042563.9
+12:04:54.490 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:6291465             12.7              13283000        1043457.1
+12:05:04.538 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:11980484             12.9              13443000        1042313.9
+12:05:14.607 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:16175885             13.1              13558000        1037727.8
+12:05:24.615 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:26566462             13.2              13712000        1036284.8
+12:05:34.640 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:36778113             13.4              13865000        1034782.6
+12:05:44.655 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:45115712             13.6              14033000        1034433.2
+12:05:54.667 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:51533507             13.7              14204000        1034317.0
+12:06:04.696 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:58537709             13.9              14356000        1032814.4
+12:06:14.760 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:64563682             14.1              14518000        1032015.6
+12:06:24.807 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:68886504             14.2              14677000        1031044.2
+12:06:34.809 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:6214315             14.4              14882000        1033344.3
+12:06:44.840 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:12934408             14.6              15039000        1032262.6
+12:06:54.872 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:18690453             14.7              15200000        1031475.8
+12:07:04.901 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:23508456             14.9              15382000        1032119.2
+12:07:14.994 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:29487469             15.1              15547000        1031547.3
+12:07:24.999 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:39459029             15.2              15716000        1031350.9
+12:07:35.010 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:48246372             15.4              15898000        1031994.8
+12:07:45.012 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:56087805             15.6              16053000        1030899.8
+12:07:55.103 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:60058068             15.7              16241000        1031828.6
+12:08:05.132 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:65305120             15.9              16408000        1031485.8
+12:08:15.178 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:3901656             16.1              16599000        1032622.9
+12:08:25.206 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:12025821             16.2              16758000        1031787.5
+12:08:35.240 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:26584279             16.4              16933000        1031935.8
+12:08:45.272 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:31644521             16.6              17103000        1031782.6
+12:08:55.430 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:39614980             16.7              17251000        1030189.3
+12:09:05.455 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:42221538             16.9              17429000        1030536.5
+12:09:15.542 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:2641239             17.1              17626000        1031926.9
+12:09:25.573 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:9042061             17.2              17798000        1031896.7
+12:09:35.605 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:20279927             17.4              17973000        1032039.4
+12:09:45.630 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:34652349             17.6              18122000        1030706.4
+12:09:55.672 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:38110155             17.7              18282000        1030001.8
+12:10:05.678 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:2121474             17.9              18486000        1031799.8
+12:10:15.688 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:4835734             18.1              18641000        1030853.0
+12:10:25.737 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:6190060             18.3              18859000        1033336.8
+12:10:35.748 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:9137632             18.4              19011000        1032228.5
+12:10:45.760 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:19454964             18.6              19192000        1032708.0
+12:10:55.831 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:29308334             18.8              19341000        1031402.6
+12:11:05.862 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:32777930             18.9              19544000        1033017.4
+12:11:15.891 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:34632905             19.1              19719000        1033139.5
+12:11:25.893 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_202:6714             19.3              20039000        1040814.9
+12:11:35.896 INFO  ProgressMeter -             unmapped             19.4              20854000        1073846.9
+12:11:45.982 INFO  ProgressMeter -             unmapped             19.6              21950000        1120584.0
+12:11:55.983 INFO  ProgressMeter -             unmapped             19.8              23097000        1169191.1
+12:12:06.280 INFO  ProgressMeter -             unmapped             19.9              24275000        1218240.2
+12:12:16.280 INFO  ProgressMeter -             unmapped             20.1              25391000        1263676.0
+12:12:26.287 INFO  ProgressMeter -             unmapped             20.3              26450000        1305544.2
+12:12:36.522 INFO  ProgressMeter -             unmapped             20.4              27575000        1349708.8
+12:12:46.524 INFO  ProgressMeter -             unmapped             20.6              28770000        1396804.2
+12:12:56.524 INFO  ProgressMeter -             unmapped             20.8              29930000        1441459.1
+12:13:06.800 INFO  ProgressMeter -             unmapped             20.9              31175000        1489136.6
+12:13:16.800 INFO  ProgressMeter -             unmapped             21.1              32322000        1531729.8
+12:13:18.951 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+12:13:19.464 INFO  OverhangFixingManager - Overhang Fixing Manager saved 77027 reads in the first pass
+12:13:19.470 INFO  SplitNCigarReads - Starting traversal pass 2
+12:13:26.824 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:2306056             21.3              32671000        1536108.3
+12:13:37.504 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:5763578             21.4              32815000        1530072.2
+12:13:47.597 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:9103812             21.6              32969000        1525290.4
+12:13:57.633 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:11610980             21.8              33050000        1517295.1
+12:14:08.421 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:16653408             22.0              33202000        1511794.2
+12:14:18.473 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:28021155             22.1              33362000        1507579.2
+12:14:28.475 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:33077385             22.3              33447000        1500120.0
+12:14:38.651 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:36309151             22.5              33594000        1495338.5
+12:14:48.741 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:41373295             22.6              33737000        1490547.4
+12:14:58.781 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:45295079             22.8              33874000        1485616.0
+12:15:09.540 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1:47752041             23.0              34036000        1481073.2
+12:15:19.582 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:2089570             23.1              34150000        1475289.4
+12:15:29.596 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:4473997             23.3              34299000        1471119.3
+12:15:39.617 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:9377159             23.5              34425000        1466021.7
+12:15:49.662 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:10325645             23.6              34513000        1459364.6
+12:15:59.719 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:11172917             23.8              34682000        1456190.8
+12:16:09.739 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:16364533             24.0              34807000        1451263.2
+12:16:20.195 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:20244323             24.2              34908000        1444974.2
+12:16:30.206 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:27205726             24.3              35078000        1442051.5
+12:16:40.268 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:36437989             24.5              35229000        1438343.0
+12:16:50.295 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:42263626             24.7              35362000        1433989.9
+12:17:00.349 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:46010873             24.8              35484000        1429224.5
+12:17:10.883 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:49603636             25.0              35577000        1422908.3
+12:17:20.933 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_2:52711198             25.2              35739000        1419875.5
+12:17:30.994 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:2515753             25.3              35880000        1416043.8
+12:17:41.033 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:3712887             25.5              35960000        1409891.1
+12:17:51.050 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:9769169             25.7              36097000        1406058.9
+12:18:01.091 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:12717515             25.8              36271000        1403687.3
+12:18:11.108 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:22819358             26.0              36383000        1398983.0
+12:18:21.112 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:34093775             26.2              36536000        1395915.7
+12:18:31.152 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:39871824             26.3              36679000        1392476.8
+12:18:41.202 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:42964236             26.5              36776000        1387337.3
+12:18:51.223 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_3:45109504             26.7              36897000        1383187.1
+12:19:05.604 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:100141             26.9              37046000        1376405.5
+12:19:15.615 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:3334674             27.1              37236000        1374941.3
+12:19:28.698 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:6661916             27.3              37382000        1369308.2
+12:19:39.268 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:13083122             27.5              37549000        1366606.7
+12:19:49.277 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:20493461             27.6              37708000        1364110.8
+12:19:59.310 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:28293148             27.8              37822000        1360007.9
+12:20:09.329 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:36790474             28.0              37978000        1357466.5
+12:20:19.355 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:39888612             28.1              38119000        1354416.8
+12:20:29.406 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:42294645             28.3              38226000        1350182.3
+12:20:39.616 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_4:46262471             28.5              38399000        1348190.3
+12:20:49.632 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:2206916             28.6              38543000        1345360.2
+12:20:59.682 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:8221569             28.8              38700000        1342988.4
+12:21:09.713 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:13400070             29.0              38845000        1340244.5
+12:21:19.738 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:16308552             29.2              38964000        1336644.9
+12:21:29.745 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:19518886             29.3              39127000        1334600.7
+12:21:43.115 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:24585423             29.5              39274000        1329509.5
+12:21:53.585 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:30813136             29.7              39436000        1327153.8
+12:22:05.815 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:37395464             29.9              39603000        1323693.8
+12:22:15.875 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:44470395             30.1              39763000        1321635.8
+12:22:25.892 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:52079011             30.3              39928000        1319795.7
+12:22:35.955 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:55171984             30.4              40061000        1316891.4
+12:22:45.998 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_5:60247417             30.6              40216000        1314752.5
+12:22:58.314 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:35234             30.8              40359000        1310633.0
+12:23:08.323 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:3119632             31.0              40547000        1309642.8
+12:23:18.536 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:6567942             31.1              40712000        1307782.2
+12:23:28.547 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:9915250             31.3              40820000        1304261.0
+12:23:38.549 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:17918837             31.5              40979000        1302405.0
+12:23:48.557 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:28241418             31.6              41120000        1299993.9
+12:23:58.602 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:33050841             31.8              41274000        1297992.6
+12:24:08.856 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:34924089             32.0              41457000        1296778.7
+12:24:18.886 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:34924652             32.1              41611000        1294825.2
+12:24:29.425 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_6:37350600             32.3              41779000        1292985.1
+12:24:41.826 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:2709300             32.5              41960000        1290333.2
+12:24:51.854 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:7151275             32.7              42117000        1288538.6
+12:25:01.859 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:11701744             32.9              42261000        1286381.6
+12:25:11.935 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:15891793             33.0              42380000        1283443.2
+12:25:21.990 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_7:18360341             33.2              42535000        1281632.8
+12:25:35.057 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:140665             33.4              42666000        1277199.5
+12:25:45.106 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:5829584             33.6              42860000        1276605.9
+12:25:55.131 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:12241781             33.7              43017000        1274937.3
+12:26:05.150 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:15159840             33.9              43123000        1271784.8
+12:26:15.173 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:18133281             34.1              43291000        1270480.2
+12:26:25.206 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:19791667             34.2              43400000        1267459.2
+12:26:35.256 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:23643035             34.4              43554000        1265765.5
+12:26:45.267 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:29018442             34.6              43715000        1264313.9
+12:26:55.320 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:35180297             34.7              43829000        1261497.3
+12:27:05.372 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:44436785             34.9              43992000        1260113.2
+12:27:18.317 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:52843031             35.1              44148000        1256814.0
+12:27:28.370 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:57236744             35.3              44329000        1255976.5
+12:27:38.942 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:61766423             35.5              44471000        1253740.2
+12:27:49.329 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_8:65643508             35.6              44651000        1252701.5
+12:27:59.345 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:860836             35.8              44816000        1251469.0
+12:28:09.366 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:3817943             36.0              44941000        1249133.7
+12:28:19.378 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:7939021             36.1              45096000        1247655.3
+12:28:29.453 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:12353601             36.3              45219000        1245273.1
+12:28:39.478 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:28661521             36.5              45379000        1243955.5
+12:28:49.521 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:32135185             36.6              45485000        1241166.3
+12:29:00.092 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_9:35921791             36.8              45619000        1238866.8
+12:29:11.091 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:4588155             37.0              45810000        1237891.2
+12:29:21.100 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:11892714             37.2              45977000        1236829.1
+12:29:31.119 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:14667342             37.3              46058000        1233467.4
+12:29:41.906 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:22368894             37.5              46222000        1231927.4
+12:29:53.814 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:36284649             37.7              46388000        1229846.3
+12:30:03.850 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:44360376             37.9              46565000        1229088.5
+12:30:17.121 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:51283437             38.1              46735000        1226416.2
+12:30:27.129 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:56442479             38.3              46860000        1224336.8
+12:30:37.149 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:60859017             38.4              46969000        1221853.9
+12:30:47.214 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:64810003             38.6              47081000        1219446.0
+12:30:57.225 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_10:67522389             38.8              47157000        1216158.2
+12:31:07.279 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:1690313             38.9              47305000        1214728.8
+12:31:17.281 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:5275263             39.1              47425000        1212616.3
+12:31:29.270 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:9749501             39.3              47508000        1208563.8
+12:31:39.279 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:14080914             39.5              47627000        1206471.2
+12:31:49.318 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:18595875             39.6              47745000        1204355.8
+12:32:00.538 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:20895758             39.8              47845000        1201212.1
+12:32:10.546 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:24258838             40.0              47970000        1199328.0
+12:32:20.615 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:29482026             40.2              48095000        1197429.1
+12:32:30.639 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:36335405             40.3              48227000        1195741.9
+12:32:40.915 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:42345292             40.5              48302000        1192537.4
+12:32:50.955 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:48248096             40.7              48451000        1191294.5
+12:33:00.985 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:54628948             40.8              48573000        1189405.5
+12:33:10.993 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:56966764             41.0              48648000        1186396.2
+12:33:21.028 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:60369968             41.2              48797000        1185195.8
+12:33:31.396 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:64286121             41.3              48916000        1183120.5
+12:33:41.422 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_11:66091579             41.5              49004000        1180477.9
+12:33:51.456 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:3943339             41.7              49148000        1179196.4
+12:34:01.497 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:9279016             41.8              49277000        1177563.8
+12:34:11.505 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:17522250             42.0              49367000        1175030.8
+12:34:21.545 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:27446045             42.2              49506000        1173664.3
+12:34:31.604 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:31399701             42.3              49645000        1172300.2
+12:34:41.711 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:36858572             42.5              49735000        1169772.4
+12:34:51.747 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:40891035             42.7              49855000        1167999.8
+12:35:01.883 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_12:42332250             42.9              49999000        1166755.7
+12:35:11.913 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:1643140             43.0              50111000        1164825.3
+12:35:21.975 INFO  ProgressMeter -             unmapped             43.2              50249000        1163497.6
+12:35:32.033 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:9588236             43.4              50382000        1162067.1
+12:35:44.250 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:16550660             43.6              50493000        1159183.3
+12:35:54.288 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:30957526             43.7              50618000        1157606.4
+12:36:04.304 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:36908111             43.9              50738000        1155937.8
+12:36:14.439 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_13:37968025             44.1              50824000        1153458.2
+12:36:24.475 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:1578542             44.2              50989000        1152827.0
+12:36:34.479 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:3507906             44.4              51124000        1151537.8
+12:36:44.705 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:5112816             44.6              51233000        1149579.9
+12:36:54.750 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:6195297             44.7              51413000        1149301.4
+12:37:07.890 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:9124225             45.0              51558000        1146927.8
+12:37:17.959 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:16917678             45.1              51724000        1146341.1
+12:37:28.007 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:28002274             45.3              51853000        1144950.6
+12:37:38.011 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:30369248             45.5              51953000        1142951.2
+12:37:48.430 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:32928506             45.6              52116000        1142173.8
+12:37:58.430 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_14:34696966             45.8              52273000        1141445.3
+12:38:08.430 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_77:181132             46.0              52392000        1139894.9
+12:38:18.433 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_276:56656             46.1              52620000        1140717.8
+12:38:30.838 INFO  ProgressMeter - Montipora_capitata_KBHIv3___Scaffold_1419:2220             46.3              52967000        1143116.7
+12:38:41.646 INFO  ProgressMeter -             unmapped             46.5              53598000        1152255.3
+12:38:52.358 INFO  ProgressMeter -             unmapped             46.7              54123000        1159093.5
+12:39:02.357 INFO  ProgressMeter -             unmapped             46.9              54646000        1166131.7
+12:39:12.599 INFO  ProgressMeter -             unmapped             47.0              55098000        1171509.8
+12:39:22.697 INFO  ProgressMeter -             unmapped             47.2              55623000        1178455.5
+12:39:33.222 INFO  ProgressMeter -             unmapped             47.4              56148000        1185173.7
+12:39:43.379 INFO  ProgressMeter -             unmapped             47.5              56673000        1191996.1
+12:39:53.383 INFO  ProgressMeter -             unmapped             47.7              57271000        1200364.3
+12:40:03.412 INFO  ProgressMeter -             unmapped             47.9              57723000        1205614.2
+12:40:13.412 INFO  ProgressMeter -             unmapped             48.0              58279000        1213004.4
+12:40:23.932 INFO  ProgressMeter -             unmapped             48.2              58848000        1220393.8
+12:40:33.936 INFO  ProgressMeter -             unmapped             48.4              59412000        1227844.5
+12:40:43.937 INFO  ProgressMeter -             unmapped             48.6              59964000        1234998.6
+12:40:54.226 INFO  ProgressMeter -             unmapped             48.7              60423000        1240071.9
+12:41:04.767 INFO  ProgressMeter -             unmapped             48.9              60948000        1246352.8
+12:41:14.768 INFO  ProgressMeter -             unmapped             49.1              61434000        1252023.6
+12:41:24.769 INFO  ProgressMeter -             unmapped             49.2              61937000        1258001.3
+12:41:35.429 INFO  ProgressMeter -             unmapped             49.4              62448000        1263819.6
+12:41:45.861 INFO  ProgressMeter -             unmapped             49.6              62973000        1269975.8
+12:41:55.864 INFO  ProgressMeter -             unmapped             49.8              63442000        1275146.9
+12:42:06.209 INFO  ProgressMeter -             unmapped             49.9              63948000        1280878.8
+12:42:16.662 INFO  ProgressMeter -             unmapped             50.1              64473000        1286903.4
+12:42:27.103 INFO  ProgressMeter -             unmapped             50.3              64998000        1292891.8
+12:42:31.939 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+12:42:31.939 INFO  ProgressMeter -             unmapped             50.4              65096620        1292780.8
+12:42:31.939 INFO  ProgressMeter - Traversal complete. Processed 65096620 total reads in 50.4 minutes.
+12:44:50.305 INFO  SplitNCigarReads - Shutting down engine
+[June 13, 2022 at 12:44:50 PM EDT] org.broadinstitute.hellbender.tools.walkers.rnaseq.SplitNCigarReads done. Elapsed time: 52.67 minutes.
+Runtime.totalMemory()=713031680
+[Mon 13 Jun 2022 12:44:50 PM EDT]      CMD: touch Mcapitata_HTHC_TP3_2518.SplitNCigarReads.done
+
+
+
+
+
+

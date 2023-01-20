@@ -1,0 +1,169 @@
+---
+title: "Plot allele depths for each sample"
+author: "Timothy Stephens"
+date: "13/09/2022"
+output: 
+  html_document:
+    keep_md: yes
+---
+
+
+
+# Setup
+
+Setup R env. Load packages and set default image export formats, size and resolution.
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.height = 12, 
+                      fig.width = 8, 
+                      dev = c("png", "pdf"),
+                      dpi = 1000)
+library(tibble)
+library(reshape2)
+library(ggplot2)
+library(RColorBrewer)
+options(scipen = 999) #Prevent scientific notation
+```
+
+
+
+
+
+# List files to plot
+
+List files with allelic proportions that we want to plot. Also get titles that we want to use for the plots.
+```{r prepare_inout_file_names, eval=FALSE}
+# P. acuta from this study
+cat ../../../Pocillopora_acuta/samples_Pacuta.annotations.txt \
+  | awk 'NR>1 {print $3"\t"$4"\t"$5"\t"$1"\t"$8}' \
+  | sed -e 's/TP//' \
+  | sort -k5,5n -k1,1 -k2,2n -k3,3n \
+  | awk -F'\t' '{ F="../../../Pocillopora_acuta/02_ploidy_analysis/extract_biallelic_sites/"$4".SplitNCigarReads.split.denoise.bin.coverage.sitesProp.gz"; if($5==2){print F"\t"$4" (Diploid)"}else if($5==3){print F"\t"$4" (Triploid)"}else if($5==4){print F"\t"$4" (Tetraploid)"}else{print F"\t"$4" (Unknown)"} }' \
+  > Pacuta_AP_files.txt
+
+# M. capitata from this study
+cat ../../../Montipora_capitata/samples_Mcapitata.annotations.txt \
+  | awk 'NR>1 {print $3"\t"$4"\t"$5"\t"$1"\t"$8}' \
+  | sed -e 's/TP//' \
+  | sort -k5,5n -k1,1 -k2,2n -k3,3n \
+  | awk -F'\t' '{ F="../../../Montipora_capitata/02_ploidy_analysis/extract_biallelic_sites/"$4".SplitNCigarReads.split.denoise.bin.coverage.sitesProp.gz"; if($5==2){print F"\t"$4" (Diploid)"}else if($5==3){print F"\t"$4" (Triploid)"}else if($5==4){print F"\t"$4" (Tetraploid)"}else{print F"\t"$4" (Unknown)"} }' \
+  > Mcapitata_AP_files.txt
+
+# P. acuta from this study
+cat ../../../samples_from_SRA/Pocillopora_selected_Runs.samples.annotations.txt \
+  | awk 'NR>1 {print $3"\t"$4"\t"$5"\t"$1"\t"$8}' \
+  | sed -e 's/TP//' \
+  | sort -k5,5n -k1,1 -k2,2n -k3,3n \
+  | awk -F'\t' '{ F="../../../samples_from_SRA/Pocillopora/02_ploidy_analysis/extract_biallelic_sites/"$4".SplitNCigarReads.split.denoise.bin.coverage.sitesProp.gz"; if($5==2){print F"\t"$4" (Diploid)"}else if($5==3){print F"\t"$4" (Triploid)"}else if($5==4){print F"\t"$4" (Tetraploid)"}else{print F"\t"$4" (Unknown)"} }' \
+  > Pacuta_fromSRA_AP_files.txt
+
+# M. capitata from this study
+cat ../../../samples_from_SRA/Montipora_selected_Runs.samples.annotations.txt \
+  | awk 'NR>1 {print $3"\t"$4"\t"$5"\t"$1"\t"$8}' \
+  | sed -e 's/TP//' \
+  | sort -k5,5n -k1,1 -k2,2n -k3,3n \
+  | awk -F'\t' '{ F="../../../samples_from_SRA/Montipora/02_ploidy_analysis/extract_biallelic_sites/"$4".SplitNCigarReads.split.denoise.bin.coverage.sitesProp.gz"; if($5==2){print F"\t"$4" (Diploid)"}else if($5==3){print F"\t"$4" (Triploid)"}else if($5==4){print F"\t"$4" (Tetraploid)"}else{print F"\t"$4" (Unknown)"} }' \
+  > Mcapitata_fromSRA_AP_files.txt
+
+# Check number of samples in each file match what we expect
+wc -l *_AP_files.txt
+```
+
+
+
+
+
+# Functions
+
+Function for plotting AP
+
+```{r func_plot_AP}
+plot_AP = function(x.lim.min, x.lim.max)
+{
+  ## plot_Pacuta_AP
+  files2plot <- read.table("Pacuta_AP_files.txt", header = F, sep='\t')
+  nsamples <- nrow(files2plot)
+  pdf(paste("plot_xLim_", x.lim.min, "-", x.lim.max, "_Pacuta_AP_combined.pdf", sep=''))
+  par(mar=c(5, 3, 3, 2), cex=1.5, mfrow=c(4,2)) # number of plots per page
+  for (i in 1:nsamples) {
+    AP <- read.table(files2plot[i,1], header = F)
+    d <- density(AP[,1], from=x.lim.min, to=x.lim.max, bw=0.01, na.rm =T)
+    plot(d, xlim = c(x.lim.min,x.lim.max), main=as.character(files2plot[i,2]), col="blue", xlab = (dim(AP)[1])/2, lwd=2)
+  }
+  dev.off()
+  
+  ## plot_Mcapitata_AP
+  files2plot <- read.table("Mcapitata_AP_files.txt", header = F, sep='\t')
+  nsamples <- nrow(files2plot)
+
+  pdf(paste("plot_xLim_", x.lim.min, "-", x.lim.max, "_Mcapitata_AP_combined.pdf", sep=''))
+  par(mar=c(5, 3, 3, 2), cex=1.5, mfrow=c(4,2)) # number of plots per page
+  for (i in 1:nsamples) {
+    AP <- read.table(files2plot[i,1], header = F)
+    d <- density(AP[,1], from=x.lim.min, to=x.lim.max, bw=0.01, na.rm =T)
+    plot(d, xlim = c(x.lim.min,x.lim.max), main=as.character(files2plot[i,2]), col="blue", xlab = (dim(AP)[1])/2, lwd=2)
+  }
+  dev.off()
+  
+  ## plot_Pacuta_fromSRA_AP
+  files2plot <- read.table("Pacuta_fromSRA_AP_files.txt", header = F, sep='\t')
+  nsamples <- nrow(files2plot)
+
+  pdf(paste("plot_xLim_", x.lim.min, "-", x.lim.max, "_Pacuta_fromSRA_AP_combined.pdf", sep=''))
+  par(mar=c(5, 3, 3, 2), cex=1.5, mfrow=c(4,2)) # number of plots per page
+  for (i in 1:nsamples) {
+    AP <- read.table(files2plot[i,1], header = F)
+    d <- density(AP[,1], from=x.lim.min, to=x.lim.max, bw=0.01, na.rm =T)
+    plot(d, xlim = c(x.lim.min,x.lim.max), main=as.character(files2plot[i,2]), col="blue", xlab = (dim(AP)[1])/2, lwd=2)
+  }
+  dev.off()
+  
+  ## plot_Mcapitata_fromSRA_AP
+  files2plot <- read.table("Mcapitata_fromSRA_AP_files.txt", header = F, sep='\t')
+  nsamples <- nrow(files2plot)
+
+  pdf(paste("plot_xLim_", x.lim.min, "-", x.lim.max, "_Mcapitata_fromSRA_AP_combined.pdf", sep=''))
+  par(mar=c(5, 3, 3, 2), cex=1.5, mfrow=c(4,2)) # number of plots per page
+  for (i in 1:nsamples) {
+    AP <- read.table(files2plot[i,1], header = F)
+    d <- density(AP[,1], from=x.lim.min, to=x.lim.max, bw=0.01, na.rm =T)
+    plot(d, xlim = c(x.lim.min,x.lim.max), main=as.character(files2plot[i,2]), col="blue", xlab = (dim(AP)[1])/2, lwd=2)
+  }
+  dev.off()
+}
+```
+
+
+
+
+
+# Load datasets into R
+
+Load allele depth files and plot distributions.
+
+```{r plotting_xLim_0.0-1.0}
+plot_AP(0.0, 1.0)
+```
+
+
+
+```{r plotting_xLim_0.1-0.9}
+plot_AP(0.1, 0.9)
+```
+
+
+
+```{r plotting_xLim_0.2-0.8}
+plot_AP(0.2, 0.8)
+```
+
+
+
+
+
+# Session Info
+
+```{r ressionInfo}
+sessionInfo()
+```

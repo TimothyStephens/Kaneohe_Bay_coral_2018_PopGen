@@ -1,0 +1,157 @@
+---
+title: "Plot nQuire results"
+author: "Timothy Stephens"
+date: "13/09/2022"
+output: 
+  html_document:
+    keep_md: yes
+---
+
+Takes nQuire delta log-liklihood values for diploid/triploid/tetraploid models and plots values in a single dot plot.
+
+# Setup
+
+Setup R env. Load packages and set default image export formats, size and resolution.
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.width = 8, 
+                      fig.height = 12, 
+                      dev = c("png", "pdf"),
+                      dpi = 1000)
+library(tibble)
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+library(RColorBrewer)
+library(reshape2)
+library(patchwork)
+library(cowplot)
+options(scipen = 999) #Prevent scientific notation
+```
+
+
+
+
+
+# Load results and plot samples
+
+## *M. capitata* RNA-Seq samples from this study
+
+```{r Plot_Mcapitata, fig.width = 8, fig.height = 8}
+xlab <- "M. capitata RNA-seq samples"
+
+file.name.1 <- "../../../Montipora_capitata/02_ploidy_analysis/nQuire/nQuire_results.tsv"
+data.1 <- read.table(file.name.1, header = T, sep = '\t')
+file.name.2 <- "../../../samples_from_SRA/Montipora/02_ploidy_analysis/nQuire/nQuire_results.tsv"
+data.2 <- read.table(file.name.2, header = T, sep = '\t')
+
+data <- rbind(data.1, data.2)
+
+data.melted <- data %>% 
+  select(c("ID", "Ploidy", "Diploid", "Triploid", "Tetraploid")) %>% 
+  melt(id.vars = c("ID", "Ploidy")) %>%
+  mutate(ID = factor(ID, data$ID)) %>%
+  mutate(variable = factor(variable, c("Diploid", "Triploid", "Tetraploid")))
+
+data.denoised.melted <- data %>% 
+  select(c("ID", "Ploidy", "Diploid_denoised", "Triploid_denoised", "Tetraploid_denoised")) %>% 
+  melt(id.vars = c("ID", "Ploidy")) %>%
+  mutate(ID = factor(ID, data$ID)) %>%
+  mutate(variable = factor(variable, c("Diploid_denoised", "Triploid_denoised", "Tetraploid_denoised")))
+
+# Plot raw sites
+MC.raw <- ggplot(data.melted, aes(x=ID, y=value, group=variable)) +
+  geom_point(aes(color=variable)) +
+  scale_color_brewer(palette="Dark2") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  xlab(xlab) +
+  ylab("delta Log-Likelihood") +
+  theme(panel.grid.major.y = element_blank(), 
+        panel.grid.minor.y = element_blank(),
+        axis.text.x = element_text(size = 3))
+
+# Plot denoised sites
+MC.denoised <- ggplot(data.denoised.melted, aes(x=ID, y=value, group=variable)) +
+  geom_point(aes(color=variable)) +
+  scale_color_brewer(palette="Dark2") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  xlab(xlab) +
+  ylab("delta Log-Likelihood") +
+  theme(panel.grid.major.y = element_blank(), 
+        panel.grid.minor.y = element_blank(),
+        axis.text.x = element_text(size = 3))
+
+# Display plots
+(MC.raw + theme(legend.position = "none")) + cowplot::get_legend(MC.raw) + plot_layout(ncol = 2, widths = c(8,2))
+(MC.denoised + theme(legend.position = "none")) + cowplot::get_legend(MC.denoised) + plot_layout(ncol = 2, widths = c(8,2)) 
+```
+
+
+
+
+
+## *P. acuta* RNA-Seq samples from this study
+
+```{r Plot_Pacuta, fig.width = 8, fig.height = 8}
+xlab <- "P. acuta RNA-seq samples"
+
+file.name.1 <- "../../../Pocillopora_acuta/02_ploidy_analysis/nQuire/nQuire_results.tsv"
+data.1 <- read.table(file.name.1, header = T, sep = '\t')
+file.name.2 <- "../../../samples_from_SRA/Pocillopora/02_ploidy_analysis/nQuire/nQuire_results.tsv"
+data.2 <- read.table(file.name.2, header = T, sep = '\t')
+
+data <- rbind(data.1, data.2)
+
+data.melted <- data %>% 
+  select(c("ID", "Ploidy", "Diploid", "Triploid", "Tetraploid")) %>% 
+  melt(id.vars = c("ID", "Ploidy")) %>%
+  mutate(ID = factor(ID, data$ID)) %>%
+  mutate(variable = factor(variable, c("Diploid", "Triploid", "Tetraploid")))
+
+data.denoised.melted <- data %>% 
+  select(c("ID", "Ploidy", "Diploid_denoised", "Triploid_denoised", "Tetraploid_denoised")) %>% 
+  melt(id.vars = c("ID", "Ploidy")) %>%
+  mutate(ID = factor(ID, data$ID)) %>%
+  mutate(variable = factor(variable, c("Diploid_denoised", "Triploid_denoised", "Tetraploid_denoised")))
+
+# Plot raw sites
+PA.raw <- ggplot(data.melted, aes(x=ID, y=value, group=variable)) +
+  geom_point(aes(color=variable)) +
+  scale_color_brewer(palette="Dark2") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  xlab(xlab) +
+  ylab("delta Log-Likelihood") +
+  theme(panel.grid.major.y = element_blank(), 
+        panel.grid.minor.y = element_blank(),
+        axis.text.x = element_text(size = 3))
+
+# Plot denoised sites
+PA.denoised <- ggplot(data.denoised.melted, aes(x=ID, y=value, group=variable)) +
+  geom_point(aes(color=variable)) +
+  scale_color_brewer(palette="Dark2") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  xlab(xlab) +
+  ylab("delta Log-Likelihood") +
+  theme(panel.grid.major.y = element_blank(), 
+        panel.grid.minor.y = element_blank(),
+        axis.text.x = element_text(size = 3))
+
+# Display plots
+(PA.raw + theme(legend.position = "none")) + cowplot::get_legend(PA.raw) + plot_layout(ncol = 2, widths = c(8,2))
+(PA.denoised + theme(legend.position = "none")) + cowplot::get_legend(PA.denoised) + plot_layout(ncol = 2, widths = c(8,2)) 
+```
+
+
+
+
+
+# Session Info
+
+```{r ressionInfo}
+sessionInfo()
+```
